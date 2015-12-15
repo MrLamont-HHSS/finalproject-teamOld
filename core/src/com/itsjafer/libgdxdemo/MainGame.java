@@ -7,6 +7,7 @@ package com.itsjafer.libgdxdemo;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.itsjafer.model.Block;
 import com.itsjafer.model.Mario;
 import com.itsjafer.model.World;
 import com.itsjafer.screens.WorldRenderer;
@@ -19,8 +20,8 @@ public class MainGame implements Screen {
 
     private World world;
     private Mario player;
-
     private WorldRenderer renderer;
+
     public MainGame() {
         world = new World();
         player = world.getPlayer();
@@ -42,10 +43,42 @@ public class MainGame implements Screen {
             player.setState(Mario.State.RUNNING);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            player.setState(Mario.State.JUMPING);
+            player.setVelocityY(2f);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
         }
         player.update(deltaTime);
+        for (Block b : world.getBlocks()) {
+            if (player.isColliding(b)) {
+                float overX = player.getOverlapX(b);
+                float overY = player.getOverlapY(b);
+                if (player.getVelocityX() == 0) {
+                    if (player.getY() > b.getY()) {
+                        player.addToPosition(0, overY);
+                    } else {
+                        player.addToPosition(0, -overY);
+                    }
+                    player.setVelocityY(0);
+                } else {
+                    if (overX < overY) {
+                        if (player.getX() < b.getX()) {
+                            player.addToPosition(overX, 0);
+                        } else {
+                            player.addToPosition(-overX, 0);
+                        }
+
+                    } else {
+                        if (player.getY() > b.getY()) {
+                            player.addToPosition(0, overY);
+                        } else {
+                            player.addToPosition(0, -overY);
+                        }
+                        player.setVelocityY(0);
+                    }
+                }
+            }
+        }
         renderer.render(deltaTime);
     }
 

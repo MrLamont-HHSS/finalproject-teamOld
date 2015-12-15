@@ -41,7 +41,7 @@ public class Mario extends Entity {
     }
 
     public void update(float delta) {
-        //acceleration.y = -9.8f;
+        acceleration.y = -9.8f;
         velocity.mulAdd(acceleration, delta);
         velocity.x = velocity.x * DAMP;
         if (velocity.x < 0.01f && velocity.x > -0.01f) {
