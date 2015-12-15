@@ -45,14 +45,14 @@ public class WorldRenderer {
         Gdx.gl20.glClearColor(0, 0, 0, 0);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        
+        camera.position.x = Math.max(player.getX(), V_WIDTH / 2);
+        camera.update();
 
-        
+
         AssetManager.load();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        for (Block b: world.getBlocks())
-        {
+        for (Block b : world.getBlocks()) {
             batch.draw(AssetManager.block, b.getX(), b.getY());
         }
         batch.draw(AssetManager.marioStand, player.getX(), player.getY());

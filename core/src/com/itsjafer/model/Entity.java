@@ -15,7 +15,7 @@ public abstract class Entity {
     private Rectangle bounds;
 
     public Entity(float x, float y, float width, float height) {
-        bounds = new Rectangle(x, y, width, height);;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        bounds = new Rectangle(x, y, width, height);
     }
 
     public void addToPosition(float x, float y)
@@ -40,7 +40,6 @@ public abstract class Entity {
     }
 
     public float getX() {
-        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
         return bounds.x;
     }
 

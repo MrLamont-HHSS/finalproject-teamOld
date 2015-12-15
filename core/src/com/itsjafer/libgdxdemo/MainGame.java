@@ -43,8 +43,7 @@ public class MainGame implements Screen {
             player.setState(Mario.State.RUNNING);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            player.setState(Mario.State.JUMPING);
-            player.setVelocityY(2f);
+            player.jump();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
         }
@@ -56,6 +55,7 @@ public class MainGame implements Screen {
                 if (player.getVelocityX() == 0) {
                     if (player.getY() > b.getY()) {
                         player.addToPosition(0, overY);
+                        player.setState(Mario.State.STANDING);
                     } else {
                         player.addToPosition(0, -overY);
                     }
@@ -71,6 +71,7 @@ public class MainGame implements Screen {
                     } else {
                         if (player.getY() > b.getY()) {
                             player.addToPosition(0, overY);
+                            player.setState(Mario.State.STANDING);
                         } else {
                             player.addToPosition(0, -overY);
                         }

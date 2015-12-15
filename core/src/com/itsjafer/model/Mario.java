@@ -51,6 +51,9 @@ public class Mario extends Entity {
     }
 
     public void jump() {
+        if (state != State.JUMPING && velocity.y == 0) {
+            velocity.y = Y_MAX_VEL;
+        }
     }
 
     public void setVelocityX(float x) {
