@@ -55,7 +55,22 @@ public class WorldRenderer {
         for (Block b : world.getBlocks()) {
             batch.draw(AssetManager.block, b.getX(), b.getY());
         }
-        batch.draw(AssetManager.marioStand, player.getX(), player.getY());
+        if (player.getState() == Mario.State.STANDING) {
+            if (player.isFacingLeft()) {
+                batch.draw(AssetManager.marioStandLeft, player.getX(), player.getY());
+            } else {
+                batch.draw(AssetManager.marioStand, player.getX(), player.getY());
+            }
+        } else if (player.getState() == Mario.State.RUNNING) {
+            if (player.isFacingLeft()) {
+                batch.draw(AssetManager.marioRunLeft.getKeyFrame(player.getStateTime(), true), player.getX(), player.getY());
+            } else {
+                batch.draw(AssetManager.marioRun.getKeyFrame(player.getStateTime(), true), player.getX(), player.getY());
+            }
+        } else {
+            batch.draw(AssetManager.marioJump, player.getX(), player.getY());
+        }
+
         batch.end();
 
     }

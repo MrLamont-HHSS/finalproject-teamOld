@@ -55,7 +55,9 @@ public class MainGame implements Screen {
                 if (player.getVelocityX() == 0) {
                     if (player.getY() > b.getY()) {
                         player.addToPosition(0, overY);
-                        player.setState(Mario.State.STANDING);
+                        if (player.getState() == Mario.State.JUMPING) {
+                            player.setState(Mario.State.STANDING);
+                        }
                     } else {
                         player.addToPosition(0, -overY);
                     }
@@ -71,7 +73,9 @@ public class MainGame implements Screen {
                     } else {
                         if (player.getY() > b.getY()) {
                             player.addToPosition(0, overY);
-                            player.setState(Mario.State.STANDING);
+                            if (player.getState() == Mario.State.JUMPING) {
+                                player.setState(Mario.State.STANDING);
+                            }
                         } else {
                             player.addToPosition(0, -overY);
                         }

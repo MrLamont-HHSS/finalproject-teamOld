@@ -15,8 +15,7 @@ public class Mario extends Entity {
     private final float X_MAX_VEL = 2.0f;
     ;
     private final float Y_MAX_VEL = 4.0f;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    private final float DAMP = 0.9f;
+    private final float DAMP = 0.3f;
 
     public enum State {
 
@@ -48,11 +47,30 @@ public class Mario extends Entity {
             velocity.x = 0;
         }
         addToPosition(velocity.x, velocity.y);
+        if (velocity.x < 0) {
+            isFacingLeft = true;
+            if (state != State.RUNNING && state != State.JUMPING) {
+                stateTime = 0;
+                state = State.RUNNING;
+            }
+        } else if (velocity.x > 0) {
+            isFacingLeft = false;
+            if (state != State.RUNNING && state != State.JUMPING) {
+                stateTime = 0;
+                state = State.RUNNING;
+            }
+        } else {
+            state = State.STANDING;
+            stateTime = 0;
+        }
+        stateTime += delta;
     }
 
     public void jump() {
         if (state != State.JUMPING && velocity.y == 0) {
             velocity.y = Y_MAX_VEL;
+            state = State.JUMPING;
+            stateTime = 0;
         }
     }
 

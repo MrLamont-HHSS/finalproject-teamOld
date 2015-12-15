@@ -21,15 +21,19 @@ public class AssetManager {
     public static TextureRegion block;
     public static TextureRegion marioStand;
     public static TextureRegion marioStandLeft;
+    public static TextureRegion marioJump;
     public static Animation marioRun;
     public static Animation marioRunLeft;
 
     public static void load() {
         atlas = new TextureAtlas("mario.pack");
         block = atlas.findRegion("stoneBlock");
+        
         marioStand = atlas.findRegion("stand");
         marioStandLeft = new TextureRegion(marioStand);
         marioStandLeft.flip(true, false);
+        
+        marioJump = atlas.findRegion("jump");
 
         Array<AtlasRegion> run = atlas.findRegions("run");
         marioRun = new Animation(0.1f, run);
