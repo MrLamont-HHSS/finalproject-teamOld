@@ -48,29 +48,36 @@ public class MainGame implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
         }
         player.update(deltaTime);
+        //collisions
+        // go through each block
         for (Block b : world.getBlocks()) {
+            // if player is hitting a block
             if (player.isColliding(b)) {
+                // get overlapping amount
                 float overX = player.getOverlapX(b);
                 float overY = player.getOverlapY(b);
+
+                //just fixing y if not moving
                 if (player.getVelocityX() == 0) {
+                    // player is above the block
                     if (player.getY() > b.getY()) {
                         player.addToPosition(0, overY);
-                        if (player.getState() == Mario.State.JUMPING) {
-                            player.setState(Mario.State.STANDING);
-                        }
+                        player.setState(Mario.State.STANDING);
                     } else {
                         player.addToPosition(0, -overY);
                     }
                     player.setVelocityY(0);
                 } else {
+                    // fix the smallest overlap
                     if (overX < overY) {
+                        // left of the block
                         if (player.getX() < b.getX()) {
-                            player.addToPosition(overX, 0);
-                        } else {
                             player.addToPosition(-overX, 0);
+                        } else {
+                            player.addToPosition(overX, 0);
                         }
-
                     } else {
+                        // above the block
                         if (player.getY() > b.getY()) {
                             player.addToPosition(0, overY);
                             if (player.getState() == Mario.State.JUMPING) {
@@ -84,6 +91,7 @@ public class MainGame implements Screen {
                 }
             }
         }
+
         renderer.render(deltaTime);
     }
 

@@ -15,7 +15,7 @@ public class Mario extends Entity {
     private final float X_MAX_VEL = 2.0f;
     ;
     private final float Y_MAX_VEL = 4.0f;
-    private final float DAMP = 0.3f;
+    private final float DAMP = 0.9f;
 
     public enum State {
 
