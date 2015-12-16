@@ -7,6 +7,8 @@ package com.itsjafer.libgdxdemo;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.itsjafer.model.Block;
 import com.itsjafer.model.Mario;
 import com.itsjafer.model.World;
@@ -21,11 +23,13 @@ public class MainGame implements Screen {
     private World world;
     private Mario player;
     private WorldRenderer renderer;
+     private TiledMap map;
 
     public MainGame() {
         world = new World();
         player = world.getPlayer();
         renderer = new WorldRenderer(world);
+        map = new TmxMapLoader().load("map.tmx");
     }
 
     @Override

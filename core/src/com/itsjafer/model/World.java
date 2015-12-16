@@ -4,6 +4,9 @@
  */
 package com.itsjafer.model;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -14,8 +17,11 @@ public class World {
     private Array<Block> blocks;
     private Mario player;
     
+    private TiledMap map;
+    
     public World()
     {
+        map = new TmxMapLoader().load("map.tmx");
         player = new Mario(16,16,16,32);
         blocks = new Array<Block>();
         demoLevel();
@@ -47,5 +53,8 @@ public class World {
 
     public Mario getPlayer() {
         return player;
+    }
+    public TiledMap getMap(){
+        return map;
     }
 }

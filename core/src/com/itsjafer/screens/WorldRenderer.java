@@ -9,6 +9,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.itsjafer.model.Block;
@@ -28,14 +29,16 @@ public class WorldRenderer {
     private Viewport viewport;
     private OrthographicCamera camera;
     private SpriteBatch batch;
+    private OrthogonalTiledMapRenderer r;
 
     public WorldRenderer(World w) {
         world = w;
         player = world.getPlayer();
 
         camera = new OrthographicCamera();
-        viewport = new FitViewport(V_WIDTH, V_HEIGHT, camera);
+        viewport = new FitViewport(30, 30, camera);
         batch = new SpriteBatch();
+        r = new OrthogonalTiledMapRenderer(world.getMap());
 
         camera.position.x = V_WIDTH / 2f;
         camera.position.y = V_HEIGHT / 2f;
@@ -45,10 +48,11 @@ public class WorldRenderer {
         Gdx.gl20.glClearColor(0, 0, 0, 0);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        camera.position.x = Math.max(player.getX(), V_WIDTH / 2);
+        camera.position.x = Math.max(player.getX()/16, 8);
         camera.update();
 
-
+        r.setView(camera);
+        r.render();
         AssetManager.load();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();

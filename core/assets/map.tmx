@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="MarioTest" tilewidth="16" tileheight="16" tilecount="324">
+  <image source="tileset.png" width="289" height="289"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt3EEOgjAURdHuiP3vzpGTRkJtP+0bnJMYB+rkXyogxNYAAAAAAAAAWru6B1n6Pnrl0iifLpn0yKNJFj2y6HGeY60sWuzzdG7Yt9Bln6fzQN9bZ5l7HmsCAAAAACCX326zXN0zZ7kem8c9uznuZq/JHv+sA2vlXbOz1aTW6nZu/1JrdX59Az3WzG7TOrxnpsmv92tSa2QfMPI69e7u0x39LLVWj5s0yaNJFj3yaJLB+fp+/uvkLDM/y/wBAAAAAAAAAAAAAAAA+PoA/foZtQ==
+  </data>
+ </layer>
+</map>
