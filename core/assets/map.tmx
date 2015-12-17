@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="100" height="20" tilewidth="16" tileheight="16" nextobjectid="25">
+ <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="2" tilecount="1350">
+  <image source="marioTiles.PNG" width="982" height="452"/>
+ </tileset>
+ <tileset firstgid="1351" name="Collisions" tilewidth="16" tileheight="16" tilecount="2">
+  <image source="collisionTiles.png" width="32" height="16"/>
+ </tileset>
+ <layer name="sky" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6F717/gCRkkrJqqqqqqqqqqPn+3C04h
+  </data>
+ </layer>
+ <layer name="background" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1EsOwWAYheG/S0AwRBCXjSCY2g2CaXeDYEkI4rIAbzrsRDXRr43zJs+gSS8n+ZM6p5RSSimllFJKKZXd1thgaz1EBR1xwtl6iAqqeM5VUfOsl/xvRZRQxg57HJBDHgW7aT/vjkfKvjPECGNccMUNPfQxiLnhiVfMZ5OqxX+gncC/4JvvLLDECnWeaaCJKdczzGNu6PCOLiYZFc56T9S9n+7zMyqc9Z6oe6136Dx0HmkUdecbApHRuw==
+  </data>
+ </layer>
+ <layer name="foreground" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0dsJg0AQheGzW1K8NBCb0mrsIFahpSRFKDpCAooBwRXXh/+Dw8A8LMMeCQAAAAAAAEtF7AOwUlmeope7mPsovxPxNZaXwvt4eCmxpJbMkvsTjgvQOqlz23l3b8tHx/v49VD/Scxeevv7wW1nqHF+w+/vAAC40gTmXhiH
+  </data>
+ </layer>
+ <layer name="hitBlocks" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1kERADAIwDCQgX+jU7EDjkRBn40AAIA5KrsLAIDNfryEPwEAgDsesEEATw==
+  </data>
+ </layer>
+ <layer name="solidBlocks" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1jEKACAMA8D2+f7aqaBjoYPIHYRsmRMBAABvWHk3AEDH+SUqk5sAAMD/NtmjBFE=
+  </data>
+ </layer>
+ <layer name="Collision" width="100" height="20" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1UEKgDAMBVE3OZu9/4lciCiipdK0/MQZyFJafVqLLSRSsX1IIzy0wkMrPLTCQys8+lrtHI/w0AoPrfDQquZxPRs9z8hMzfx/3Nd48vm7UTaP6K6zPFrXiPoce3p7Lz1sah6texvZrG/nyzqjPI5r8dDyiDrR7ifKPvHIMXhoTVaPDf6PkGc=
+  </data>
+ </layer>
+</map>
