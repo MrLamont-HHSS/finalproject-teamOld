@@ -9,7 +9,7 @@ public class TiledGame extends ApplicationAdapter {
 
     private View view;
     private World world;
-    private InputManager inputManager;
+    private GameInput inputManager;
     
     @Override
     public void create() {
@@ -17,7 +17,7 @@ public class TiledGame extends ApplicationAdapter {
         
         view = new View();
         world = new World();
-        inputManager = new InputManager();
+        inputManager = new GameInput();
         Gdx.input.setInputProcessor(inputManager);
 //        batch = new SpriteBatch();
 //        camera = new OrthographicCamera();
@@ -58,6 +58,8 @@ public class TiledGame extends ApplicationAdapter {
         
         world.update();
         view.render(world);
+        GameInputManager.processInput(inputManager, world);
+        inputManager.reset();
     }
 
     @Override

@@ -4,18 +4,47 @@
  */
 package game;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import java.util.HashMap;
 
 /**
  *
  * @author kobed6328
  */
-public class InputManager implements InputProcessor{
+public class GameInput implements InputProcessor{
 
+    private HashMap<Integer, Boolean> thing;
+    
+    public GameInput()
+    {
+        thing = new HashMap();
+        thing.put(Input.Keys.W, false);
+        thing.put(Input.Keys.A, false);
+        thing.put(Input.Keys.S, false);
+        thing.put(Input.Keys.D, false);
+    }
+    
+    public boolean wPressed()
+    {
+        return thing.get(Input.Keys.W);
+    }
+    public boolean sPressed()
+    {
+        return thing.get(Input.Keys.S);
+    }
+    
+    public void reset()
+    {
+        for (Integer key: thing.keySet())
+        {
+            thing.put(key, false);
+        }
+    }
     
     @Override
     public boolean keyDown(int i) {
-        System.out.println("heyyyy");
+        thing.put(i, true);
         return false;
     }
 

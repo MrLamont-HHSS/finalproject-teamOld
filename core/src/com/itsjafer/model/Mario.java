@@ -55,10 +55,16 @@ public class Mario {
     }
     
     public void jump(){
-        if(state != State.JUMPING && velocity.y == 0){
-            velocity.y = MAX_Y_VEL;
-            state = State.JUMPING;
-        }
+//        if(state != State.JUMPING && velocity.y == 0){
+//            velocity.y = MAX_Y_VEL;
+//            state = State.JUMPING;
+//        }
+        state = State.JUMPING;
+    }
+    
+    public void stand()
+    {
+        state = State.STANDING;
     }
     
     public void update(float delta){
