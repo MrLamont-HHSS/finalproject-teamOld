@@ -1,8 +1,7 @@
 package com.itsjafer.libgdxdemo.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.itsjafer.screens.TiledGame;
+import game.TiledGame;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 

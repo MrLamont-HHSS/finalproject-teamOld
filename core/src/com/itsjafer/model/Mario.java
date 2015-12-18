@@ -97,4 +97,13 @@ public class Mario {
     public float getHeight(){
         return bounds.getHeight();
     }
+    
+    public boolean isStanding()
+    {
+        return state == State.STANDING;
+    }
+    public boolean isJumping()
+    {
+        return state == State.JUMPING;
+    }
 }

@@ -26,6 +26,7 @@ public class AssetManager {
 
     public static void load() {
         atlas = new TextureAtlas("mario.pack");
+        
         block = atlas.findRegion("stoneBlock");
         
         marioStand = atlas.findRegion("stand");
@@ -42,7 +43,6 @@ public class AssetManager {
 
         for (TextureRegion r : marioRunLeft.getKeyFrames()) {
             r.flip(true, false);
-
         }
 
     }
