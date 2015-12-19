@@ -157,12 +157,12 @@ public class Mario {
 //        return this.bounds;
 //    }
 //    
-//    public float getWidth(){
-//        return bounds.getWidth();
-//    }
-//    
-//    public float getHeight(){
-//        return bounds.getHeight();
-//    }
+    public float getWidth(){
+        return bounds.getWidth();
+    }
+    
+    public float getHeight(){
+        return bounds.getHeight();
+    }
     
 }
