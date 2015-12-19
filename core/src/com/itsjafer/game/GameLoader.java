@@ -62,20 +62,20 @@ public class GameLoader {
         return new Mario(x, y, width, height);
     }
     
-    private static Array<Rectangle> getCollisionLayer()
+    private static TiledMapTileLayer getCollisionLayer()
     {
-        Array<Rectangle> collisionBlocks = new Array();
+//        Array<Rectangle> collisionBlocks = new Array();
         
         TiledMapTileLayer solidBlocks = (TiledMapTileLayer) map.getLayers().get("Collision");// loop through all of the cells, find a tile and make a rectangle
-        for (int x = 0; x < levelWidth; x++) {
-            for (int y = 0; y < levelHeight; y++) {
-                if (solidBlocks.getCell(x, y) != null) {
-                    Rectangle r = new Rectangle(x, y, tileWidth, tileHeight);
-                    collisionBlocks.add(r);
-                }
-            }
-        }
+//        for (int x = 0; x < levelWidth; x++) {
+//            for (int y = 0; y < levelHeight; y++) {
+//                if (solidBlocks.getCell(x, y) != null) {
+//                    Rectangle r = new Rectangle(x, y, tileWidth, tileHeight);
+//                    collisionBlocks.add(r);
+//                }
+//            }
+//        }
         
-        return collisionBlocks;
+        return solidBlocks;
     }
 }
