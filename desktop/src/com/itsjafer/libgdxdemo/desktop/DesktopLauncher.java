@@ -1,8 +1,8 @@
 package com.itsjafer.libgdxdemo.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import game.TiledGame;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.itsjafer.game.TiledGame;
 
 
 public class DesktopLauncher {

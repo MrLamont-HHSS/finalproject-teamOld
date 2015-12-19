@@ -24,26 +24,29 @@ public class Mario {
     private final float MAX_Y_VEL= 0.7f;
     private final float MAX_X_VEL= 1f;
     
-    public static final float WIDTH = 1;
-    public static final float HEIGHT = 2;
+    public float width;
+    public float height;
     
-    public Mario(float x, float y){
+    public Mario(float x, float y, float width, float height){
         position = new Vector2(x,y);
         velocity = new Vector2(0,0);
         acceleration = new Vector2(0,-2f);
-        bounds = new Rectangle(x,y, WIDTH, HEIGHT);
+        this.width = width;
+        this.height = height;
+        
+        bounds = new Rectangle(x,y, width, height);
     }
     
     public float getX(){
         return position.x;
     }
     
-    public void land(){
-        state = State.STANDING;
-    }
-    
     public float getY(){
         return position.y;
+    }
+    
+    public void land(){
+        state = State.STANDING;
     }
     
     public void setVelocityX(float x){

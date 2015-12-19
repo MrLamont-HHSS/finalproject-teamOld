@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package game;
+package com.itsjafer.game;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;

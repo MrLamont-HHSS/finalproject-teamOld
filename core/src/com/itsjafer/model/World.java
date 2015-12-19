@@ -4,6 +4,9 @@
  */
 package com.itsjafer.model;
 
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
+
 /**
  *
  * @author kobed6328
@@ -11,10 +14,12 @@ package com.itsjafer.model;
 public class World {
     
     private Mario mario;
+    private Array<Rectangle> collisionBlocks;
     
-    public World()
+    public World(Mario mario, Array<Rectangle> collisionBlocks)
     {
-        mario = new Mario(0, 0);
+        this.mario = mario;
+        this.collisionBlocks = collisionBlocks;
     }
     
     public void update()

@@ -4,7 +4,7 @@
  */
 package com.itsjafer.screens;
 
-import game.GameLoader;
+import com.itsjafer.game.GameLoader;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -44,13 +44,7 @@ public class View {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-//        // move the camera to the correct position
-//        camera.position.x = Math.max(camera.viewportWidth / 2, player.getX());
-//        camera.position.x = Math.min(camera.position.x, levelWidth - camera.viewportWidth / 2);
-//
-//        camera.position.y = Math.max(camera.viewportHeight / 2, player.getY());
-//        camera.position.y = Math.min(camera.position.y, levelHeight - camera.viewportHeight /2);
-
+        centerCameraOnPlayer(world.getMario());
         camera.update();
 
         // link the batch renderer with the camera
@@ -63,9 +57,22 @@ public class View {
         // render the sprites
         batch.begin();
 ////        batch.draw(img, player.getX(), player.getY(), Mario.WIDTH, Mario.HEIGHT);
-        renderMario(world.getMario());
+        if (world.getMario() != null)
+        {
+            renderMario(world.getMario());
+        }
         
         batch.end();
+    }
+    
+    private void centerCameraOnPlayer(Mario mario)
+    {
+        // move the camera to the correct position
+        camera.position.x = Math.max(camera.viewportWidth / 2, mario.getX()/GameLoader.PPU);
+        camera.position.x = Math.min(camera.position.x, GameLoader.levelWidth - camera.viewportWidth / 2);
+
+        camera.position.y = Math.max(camera.viewportHeight / 2, mario.getY()/GameLoader.PPU);
+        camera.position.y = Math.min(camera.position.y, GameLoader.levelHeight - camera.viewportHeight /2);
     }
     
     private void renderMario(Mario mario)
@@ -79,8 +86,7 @@ public class View {
         {
             marioTexture = AssetManager.marioJump;
         }
-        
-        batch.draw(marioTexture, 0f, 0f, mario.getWidth(), mario.getHeight());
+        batch.draw(marioTexture, mario.getX()/GameLoader.PPU, mario.getY()/GameLoader.PPU, mario.getWidth()/GameLoader.PPU, mario.getHeight()/GameLoader.PPU);
     }
     
     public void resize(int width, int height) {

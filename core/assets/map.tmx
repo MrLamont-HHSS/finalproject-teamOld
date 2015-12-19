@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="100" height="20" tilewidth="16" tileheight="16" nextobjectid="25">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="100" height="20" tilewidth="16" tileheight="16" nextobjectid="56">
  <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="2" tilecount="1350">
   <image source="marioTiles.PNG" width="982" height="452"/>
+  <tile id="1349">
+   <properties>
+    <property name="Mario" value="true"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="1351" name="Collisions" tilewidth="16" tileheight="16" tilecount="2">
   <image source="collisionTiles.png" width="32" height="16"/>
+ </tileset>
+ <tileset firstgid="1353" name="MarioStand" tilewidth="16" tileheight="32" tilecount="1">
+  <image source="stand.png" width="16" height="32"/>
  </tileset>
  <layer name="sky" width="100" height="20">
   <data encoding="base64" compression="zlib">
@@ -33,7 +41,10 @@
  </layer>
  <layer name="Collision" width="100" height="20" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt1UEKgDAMBVE3OZu9/4lciCiipdK0/MQZyFJafVqLLSRSsX1IIzy0wkMrPLTCQys8+lrtHI/w0AoPrfDQquZxPRs9z8hMzfx/3Nd48vm7UTaP6K6zPFrXiPoce3p7Lz1sah6texvZrG/nyzqjPI5r8dDyiDrR7ifKPvHIMXhoTVaPDf6PkGc=
+   eJztlbEKgDAMBV3ybfb/v8hBRAcXaWwv5Q7eWJJwCW2xCYQWZ4SBPljog4U+WOiDhT762ONOBvpgoQ8W+mChjz78P1jM9PGsndVD9jyj8T7m87aXWXtK9zHqdr7U+cvH9VYfLB9VU22eKn3qY43og5VVfRwoZoor
   </data>
  </layer>
+ <objectgroup name="Mario">
+  <object id="51" name="Mario" gid="1353" x="60" y="256" width="16" height="32"/>
+ </objectgroup>
 </map>
