@@ -31,5 +31,9 @@ public class World {
     {
         return mario;
     }
+    public Array<Rectangle> getCollisionBlocks()
+    {
+        return collisionBlocks;
+    }
     
 }
