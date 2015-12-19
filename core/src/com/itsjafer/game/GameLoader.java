@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.itsjafer.model.Mario;
 import com.itsjafer.model.World;
@@ -44,16 +45,19 @@ public class GameLoader {
     
     public static World generateWorld()
     {
-        return new World(getMario(), getCollisionLayer());
+        float gravX = Float.parseFloat(map.getProperties().get("GravityX").toString());
+        float gravY = Float.parseFloat(map.getProperties().get("GravityY").toString());
+        
+        return new World(getMario(), getCollisionLayer(), new Vector2(gravX, gravY));
     }
     
     private static Mario getMario()
     {
-        float width = Float.parseFloat(map.getLayers().get("Mario").getObjects().get(0).getProperties().get("width").toString());
-        float height = Float.parseFloat(map.getLayers().get("Mario").getObjects().get(0).getProperties().get("height").toString());
+        float width = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("width", Float.class);
+        float height = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("height", Float.class);
         
-        float x = Float.parseFloat(map.getLayers().get("Mario").getObjects().get(0).getProperties().get("x").toString());
-        float y = Float.parseFloat(map.getLayers().get("Mario").getObjects().get(0).getProperties().get("y").toString()) + height;
+        float x = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("x", Float.class);
+        float y = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("y", Float.class) + height;
         
         return new Mario(x, y, width, height);
     }

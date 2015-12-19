@@ -26,7 +26,7 @@ public class TiledGame extends ApplicationAdapter {
     @Override
     public void render() {
         
-        world.update();
+        world.update(Gdx.graphics.getDeltaTime());
         view.render(world);
         GameInputManager.processInput(inputManager, world);
         inputManager.reset();

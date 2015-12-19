@@ -24,17 +24,24 @@ public class Mario {
     private final float MAX_Y_VEL= 0.7f;
     private final float MAX_X_VEL= 1f;
     
-    public float width;
-    public float height;
+    private float width;
+    private float height;
     
     public Mario(float x, float y, float width, float height){
         position = new Vector2(x,y);
         velocity = new Vector2(0,0);
-        acceleration = new Vector2(0,-2f);
+        
+        acceleration = new Vector2(0, 0);
+        
         this.width = width;
         this.height = height;
         
         bounds = new Rectangle(x,y, width, height);
+    }
+    
+    public void setAcceleration(Vector2 acceleration)
+    {
+        this.acceleration = acceleration;
     }
     
     public float getX(){
@@ -70,18 +77,35 @@ public class Mario {
         state = State.STANDING;
     }
     
-    public void update(float delta){
+    public void fall(float delta)
+    {
         velocity.mulAdd(acceleration, delta);
-        if (acceleration.x == 0) {
-            if (velocity.x < 0.01f && velocity.x > -0.01f) {
-                velocity.x = 0;
-            }
-        }
-        MathUtils.clamp(velocity.x, -MAX_X_VEL, MAX_X_VEL);
-        MathUtils.clamp(velocity.y, -MAX_Y_VEL, MAX_Y_VEL);
         position.add(velocity);
+        updateBounds();
+    }
+    
+    private void updateBounds()
+    {
         bounds.x = position.x;
         bounds.y = position.y;
+        bounds.width = width;
+        bounds.height = height;
+    }
+    
+    public void update(float delta){
+        fall(delta);
+        updateBounds();
+//        velocity.mulAdd(acceleration, delta);
+//        if (acceleration.x == 0) {
+//            if (velocity.x < 0.01f && velocity.x > -0.01f) {
+//                velocity.x = 0;
+//            }
+//        }
+//        MathUtils.clamp(velocity.x, -MAX_X_VEL, MAX_X_VEL);
+//        MathUtils.clamp(velocity.y, -MAX_Y_VEL, MAX_Y_VEL);
+//        position.add(velocity);
+//        bounds.x = position.x;
+//        bounds.y = position.y;
     }
     
     public void add(float x, float y){
