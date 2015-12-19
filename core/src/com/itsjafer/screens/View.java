@@ -6,16 +6,11 @@ package com.itsjafer.screens;
 
 import com.itsjafer.game.GameLoader;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.itsjafer.model.Mario;
@@ -85,7 +80,7 @@ public class View {
         TextureRegion marioTexture = null;
         if (mario.isStanding())
         {
-            marioTexture = AssetManager.marioStand;
+            marioTexture = AssetManager.marioStandRight;
         }
         else if (mario.isJumping())
         {
