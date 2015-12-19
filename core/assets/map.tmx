@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-up" width="100" height="20" tilewidth="16" tileheight="16" nextobjectid="56">
  <properties>
   <property name="GravityX" value="0"/>
-  <property name="GravityY" value="-9.8"/>
+  <property name="GravityY" value="0"/>
  </properties>
  <tileset firstgid="1" name="mario" tilewidth="16" tileheight="16" spacing="2" margin="2" tilecount="1350">
   <image source="marioTiles.PNG" width="982" height="452"/>
