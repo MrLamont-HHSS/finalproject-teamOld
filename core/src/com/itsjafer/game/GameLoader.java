@@ -8,6 +8,10 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.itsjafer.model.Mario;
 import com.itsjafer.model.GameWorld;
 
@@ -53,7 +57,20 @@ public class GameLoader {
 
         float x = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("x", Float.class);
         float y = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("y", Float.class) + height;
-
+        
+        // body definition
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyType.DynamicBody;
+        // box shape
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(10f, 10f);
+        // fixture definition
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = shape;
+        fixtureDef.friction = 0.75f;
+        fixtureDef.restitution = 0f;
+        
+        
         return new Mario(x, y, width, height);
     }
 

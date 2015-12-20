@@ -6,6 +6,7 @@ package com.itsjafer.model;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 
 /**
  * The actual level
@@ -18,8 +19,9 @@ public class GameWorld {
     // The blocks with which Mario can collide
     private TiledMapTileLayer collisionBlocks;
     // The global gravity "constant" (it can change)
-    private Vector2 gravity;
 
+    // The physics environment of the game
+    World physicsWorld;
     /**
      * Creates the World object
      *
@@ -31,7 +33,7 @@ public class GameWorld {
         this.mario = mario;
         this.collisionBlocks = collisionBlocks;
 
-        this.gravity = gravity;
+        physicsWorld = new World(gravity, true);
         // mario should accelerate according to the global gravity as soon as he spawns
         mario.setAcceleration(gravity);
     }

@@ -19,7 +19,7 @@ public class TiledGame extends ApplicationAdapter {
     private GameWorld world;
     // The input getter for IN GAME
     private GameInput gameInput;
-
+    
     /**
      * Creates the TiledGame class.
      */
