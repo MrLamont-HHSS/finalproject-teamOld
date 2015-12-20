@@ -7,11 +7,9 @@ package com.itsjafer.game;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
 import com.itsjafer.model.Mario;
-import com.itsjafer.model.World;
+import com.itsjafer.model.GameWorld;
 
 /**
  *
@@ -42,11 +40,11 @@ public class GameLoader {
 
     }
 
-    public static World generateWorld() {
+    public static GameWorld generateWorld() {
         float gravX = Float.parseFloat(map.getProperties().get("GravityX").toString());
         float gravY = Float.parseFloat(map.getProperties().get("GravityY").toString());
 
-        return new World(getMario(), getCollisionLayer(), new Vector2(gravX, gravY));
+        return new GameWorld(getMario(), getCollisionLayer(), new Vector2(gravX, gravY));
     }
 
     private static Mario getMario() {

@@ -4,7 +4,7 @@
  */
 package com.itsjafer.game;
 
-import com.itsjafer.model.World;
+import com.itsjafer.model.GameWorld;
 
 /**
  *
@@ -12,7 +12,7 @@ import com.itsjafer.model.World;
  */
 public class GameInputManager {
 
-    public static void processInput(GameInput inputStream, World world) {
+    public static void processInput(GameInput inputStream, GameWorld world) {
         if (inputStream.wPressed()) {
             world.getMario().jump();
         } else if (inputStream.sPressed()) {

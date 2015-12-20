@@ -2,7 +2,7 @@ package com.itsjafer.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.itsjafer.model.World;
+import com.itsjafer.model.GameWorld;
 import com.itsjafer.screens.View;
 
 /**
@@ -16,7 +16,7 @@ public class TiledGame extends ApplicationAdapter {
     // The visual components of IN GAME
     private View gameView;
     // The actual game world
-    private World world;
+    private GameWorld world;
     // The input getter for IN GAME
     private GameInput gameInput;
 

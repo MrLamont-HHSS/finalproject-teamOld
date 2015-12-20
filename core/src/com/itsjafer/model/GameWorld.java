@@ -12,7 +12,7 @@ import com.badlogic.gdx.math.Vector2;
  *
  * @author kobed6328
  */
-public class World {
+public class GameWorld {
 
     private Mario mario;
     // The blocks with which Mario can collide
@@ -27,7 +27,7 @@ public class World {
      * @param collisionBlocks
      * @param gravity
      */
-    public World(Mario mario, TiledMapTileLayer collisionBlocks, Vector2 gravity) {
+    public GameWorld(Mario mario, TiledMapTileLayer collisionBlocks, Vector2 gravity) {
         this.mario = mario;
         this.collisionBlocks = collisionBlocks;
 

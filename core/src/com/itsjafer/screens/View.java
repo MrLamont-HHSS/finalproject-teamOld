@@ -15,7 +15,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.itsjafer.model.Mario;
-import com.itsjafer.model.World;
+import com.itsjafer.model.GameWorld;
 
 /**
  *
@@ -40,7 +40,7 @@ public class View {
         AssetManager.load();
     }
 
-    public void render(World world) {
+    public void render(GameWorld world) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
