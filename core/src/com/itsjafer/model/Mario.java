@@ -66,16 +66,16 @@ public class Mario {
     }
     
     public void setVelocityY(float y){
-        velocity.y = 0;
+        velocity.y = y;
     }
     /**
      * Sets the player's state to jumping.
      */
     public void jump(){
-//        if(state != State.JUMPING && velocity.y == 0){
-//            velocity.y = MAX_Y_VEL;
-//            state = State.JUMPING;
-//        }
+        if(state != State.JUMPING && velocity.y == 0){
+            velocity.y = 4;
+            state = State.JUMPING;
+        }
         state = State.JUMPING;
     }
     /**

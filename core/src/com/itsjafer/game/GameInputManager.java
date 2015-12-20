@@ -21,5 +21,11 @@ public class GameInputManager {
         {
             world.getMario().stand();
         }
+        if(inputStream.APressed()){
+            world.getMario().setVelocityX(-2);
+        }
+        else if(inputStream.DPressed()){
+            world.getMario().setVelocityX(2);
+        }
     }
 }

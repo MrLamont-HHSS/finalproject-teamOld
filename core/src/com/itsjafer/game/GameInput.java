@@ -33,6 +33,14 @@ public class GameInput implements InputProcessor{
     {
         return thing.get(Input.Keys.S);
     }
+    public boolean APressed()
+    {
+        return thing.get(Input.Keys.A);
+    }
+    public boolean DPressed()
+    {
+        return thing.get(Input.Keys.D);
+    }
     
     public void reset()
     {
