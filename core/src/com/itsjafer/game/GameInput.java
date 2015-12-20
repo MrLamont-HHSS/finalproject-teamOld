@@ -12,44 +12,40 @@ import java.util.HashMap;
  *
  * @author kobed6328
  */
-public class GameInput implements InputProcessor{
+public class GameInput implements InputProcessor {
 
     private HashMap<Integer, Boolean> thing;
-    
-    public GameInput()
-    {
+
+    public GameInput() {
         thing = new HashMap();
         thing.put(Input.Keys.W, false);
         thing.put(Input.Keys.A, false);
         thing.put(Input.Keys.S, false);
         thing.put(Input.Keys.D, false);
     }
-    
-    public boolean wPressed()
-    {
+
+    public boolean wPressed() {
         return thing.get(Input.Keys.W);
     }
-    public boolean sPressed()
-    {
+
+    public boolean sPressed() {
         return thing.get(Input.Keys.S);
     }
-    public boolean APressed()
-    {
+
+    public boolean aPressed() {
         return thing.get(Input.Keys.A);
     }
-    public boolean DPressed()
-    {
+
+    public boolean dPressed() {
         return thing.get(Input.Keys.D);
     }
-    
-    public void reset()
-    {
-        for (Integer key: thing.keySet())
-        {
+
+    public void reset() {
+        for (Integer key : thing.keySet()) {
             thing.put(key, false);
         }
     }
-    
+
     @Override
     public boolean keyDown(int i) {
         thing.put(i, true);
@@ -90,5 +86,5 @@ public class GameInput implements InputProcessor{
     public boolean scrolled(int i) {
         return false;
     }
-    
+
 }

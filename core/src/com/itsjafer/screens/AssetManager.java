@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Array;
 
 /**
  * The graphics storage of the game
+ *
  * @author haidj9901
  */
 public class AssetManager {
@@ -28,15 +29,15 @@ public class AssetManager {
 
     public static void load() {
         atlas = new TextureAtlas("mario.pack");
-        
+
         block = atlas.findRegion("stoneBlock");
-        
+
         // The image is set to right by default
         marioStandRight = atlas.findRegion("stand");
         // Need to flip the image for left
         marioStandLeft = new TextureRegion(marioStandRight);
         marioStandLeft.flip(true, false);
-        
+
         marioJump = atlas.findRegion("jump");
 
         // The images for the run animation

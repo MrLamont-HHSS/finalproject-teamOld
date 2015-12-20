@@ -6,8 +6,10 @@ package com.itsjafer.model;
 
 import com.badlogic.gdx.math.Rectangle;
 ////// //////////////////////////////////////// THIS ENTIRE CLASS IS UMM. shall we say... out to lunch.. for the moment
+
 /**
  * Game entity
+ *
  * @author haidj9901
  */
 public abstract class Entity {
@@ -17,6 +19,7 @@ public abstract class Entity {
 
     /**
      * Creates an entity.
+     *
      * @param x the x value of the bottom left corner.
      * @param y the y value of the bottom left corner.
      * @param width the width of the entity.
@@ -26,7 +29,7 @@ public abstract class Entity {
         // creates the hitbox to be the entire sprite
         bounds = new Rectangle(x, y, width, height);
     }
-    
+
     //////// OLD CODE FROM HERE ON IN. VENTURE AT YOUR OWN RISK ///////////////////////////////////////
 //    public void addToPosition(float x, float y)
 //    {

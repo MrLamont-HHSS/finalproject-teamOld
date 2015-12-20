@@ -6,7 +6,9 @@ import com.itsjafer.model.World;
 import com.itsjafer.screens.View;
 
 /**
- * Main libGDX class which contains the game loop and all of the big game objects.
+ * Main libGDX class which contains the game loop and all of the big game
+ * objects.
+ *
  * @author Dmitry
  */
 public class TiledGame extends ApplicationAdapter {
@@ -17,7 +19,7 @@ public class TiledGame extends ApplicationAdapter {
     private World world;
     // The input getter for IN GAME
     private GameInput gameInput;
-    
+
     /**
      * Creates the TiledGame class.
      */
@@ -27,13 +29,13 @@ public class TiledGame extends ApplicationAdapter {
         GameLoader.loadGame();
         // Uses the info from GameLoader.loadGame() and creates the world
         world = GameLoader.generateWorld();
-        
+
         gameView = new View();
-        
+
         // sets up the game input
         gameInput = new GameInput();
         Gdx.input.setInputProcessor(gameInput);
-        
+
     }
 
     /**
@@ -53,6 +55,7 @@ public class TiledGame extends ApplicationAdapter {
 
     /**
      * Resizes the game window.
+     *
      * @param width the new width of the window.
      * @param height the new height of the window.
      */
