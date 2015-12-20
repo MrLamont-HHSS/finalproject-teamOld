@@ -7,6 +7,7 @@ package com.itsjafer.model;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 
 /**
  * The player
@@ -26,8 +27,10 @@ public class Mario {
     // Acceleration (x component, y component)
     private Vector2 acceleration;
 
+    private Body body;
+    
     private float stateTime;
-
+    
     // Some enums to keep track of animation state
 
     public static enum State {
@@ -43,19 +46,24 @@ public class Mario {
     /// OLD STUFF
 //    private final float MAX_Y_VEL= 0.7f;
 //    private final float MAX_X_VEL= 1f;
-    public Mario(float x, float y, float width, float height) {
+    public Mario(Body body, float width, float height) {
         // set up the hitbox
-        bounds = new Rectangle(x, y, width, height);
-        this.width = width;
-        this.height = height;
-        // start standing
+//        bounds = new Rectangle(x, y, width, height);
+//        this.width = width;
+//        this.height = height;
+//        // start standing
         state = State.STANDING;
-        // the position vector
-        position = new Vector2(x, y);
+//        // the position vector
+//        position = new Vector2(x, y);
         // start moving 0
         velocity = new Vector2(0, 0);
         // start accelerating 0
         acceleration = new Vector2(0, 0);
+        
+        this.body = body;
+        
+        this.width = width;
+        this.height = height;
 
     }
 
@@ -64,11 +72,11 @@ public class Mario {
     }
 
     public float getX() {
-        return position.x;
+        return body.getPosition().x;
     }
 
     public float getY() {
-        return position.y;
+        return body.getPosition().y;
     }
 
     public void setVelocityX(float x) {
@@ -121,22 +129,22 @@ public class Mario {
      * @param delta the time factor by which the game runs.
      */
     public void accelerate(float delta) {
-        // Applies the acceleration vector to the velocity vector
-        velocity.mulAdd(acceleration, delta);
-        // Applies the velocity vector to the player's position vector
-        position.add(velocity);
-        // Update hitbox coordinates
-        updateBounds();
+//        // Applies the acceleration vector to the velocity vector
+//        velocity.mulAdd(acceleration, delta);
+//        // Applies the velocity vector to the player's position vector
+//        position.add(velocity);
+//        // Update hitbox coordinates
+//        updateBounds();
     }
 
     /**
      * Updates the hitbox position and dimensions.
      */
     private void updateBounds() {
-        bounds.x = position.x;
-        bounds.y = position.y;
-        bounds.width = width;
-        bounds.height = height;
+//        bounds.x = position.x;
+//        bounds.y = position.y;
+//        bounds.width = width;
+//        bounds.height = height;
     }
 
     /**
@@ -193,11 +201,11 @@ public class Mario {
 //    }
 //    
     public float getWidth() {
-        return bounds.getWidth();
+        return width;
     }
 
     public float getHeight() {
-        return bounds.getHeight();
+        return height;
     }
 
 }

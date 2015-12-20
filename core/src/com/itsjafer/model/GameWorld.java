@@ -6,6 +6,7 @@ package com.itsjafer.model;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 /**
@@ -25,17 +26,17 @@ public class GameWorld {
     /**
      * Creates the World object
      *
-     * @param mario
-     * @param collisionBlocks
-     * @param gravity
+     * @param mario the player.
+     * @param collisionBlocks the tile layer with which the player can collide.
+     * @param physicsWorld the physics environment for the world.
      */
-    public GameWorld(Mario mario, TiledMapTileLayer collisionBlocks, Vector2 gravity) {
+    public GameWorld(Mario mario, TiledMapTileLayer collisionBlocks, World physicsWorld) {
         this.mario = mario;
         this.collisionBlocks = collisionBlocks;
 
-        physicsWorld = new World(gravity, true);
+        this.physicsWorld = physicsWorld;
         // mario should accelerate according to the global gravity as soon as he spawns
-        mario.setAcceleration(gravity);
+        mario.setAcceleration(physicsWorld.getGravity());
     }
 
     /**
@@ -45,7 +46,7 @@ public class GameWorld {
      */
     public void update(float delta) {
         mario.update(delta);
-
+        physicsWorld.step(1/60f, 8, 3);
         // starting collision
 //        System.out.println(collisionBlocks.getCell((int)mario.getX()/GameLoader.PPU, (int)mario.getY()/GameLoader.PPU));
     }

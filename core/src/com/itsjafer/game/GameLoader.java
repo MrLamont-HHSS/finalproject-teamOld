@@ -12,6 +12,8 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.itsjafer.model.Mario;
 import com.itsjafer.model.GameWorld;
 
@@ -28,7 +30,9 @@ public class GameLoader {
     public static int tileHeight;
 
     public static final int PPU = 16;
-
+    
+    private static World physicsWorld;
+    
     public static void loadGame() {
         map = new TmxMapLoader().load("map.tmx");
 
@@ -47,8 +51,10 @@ public class GameLoader {
     public static GameWorld generateWorld() {
         float gravX = Float.parseFloat(map.getProperties().get("GravityX").toString());
         float gravY = Float.parseFloat(map.getProperties().get("GravityY").toString());
-
-        return new GameWorld(getMario(), getCollisionLayer(), new Vector2(gravX, gravY));
+        
+        physicsWorld = new World(new Vector2(gravX, gravY), true);
+        
+        return new GameWorld(getMario(), getCollisionLayer(), physicsWorld);
     }
 
     private static Mario getMario() {
@@ -58,20 +64,24 @@ public class GameLoader {
         float x = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("x", Float.class);
         float y = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("y", Float.class) + height;
         
-        // body definition
+        //body definition
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyType.DynamicBody;
-        // box shape
+        bodyDef.position.set(x, y);
+        //box shape
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(10f, 10f);
+        shape.setAsBox(width, height);
         // fixture definition
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.friction = 0.75f;
         fixtureDef.restitution = 0f;
         
+        Body marioBody = physicsWorld.createBody(bodyDef);
         
-        return new Mario(x, y, width, height);
+        shape.dispose();
+
+        return new Mario(marioBody, width, height);
     }
 
     private static TiledMapTileLayer getCollisionLayer() {
