@@ -14,41 +14,41 @@ import java.util.HashMap;
  */
 public class GameInput implements InputProcessor {
 
-    private HashMap<Integer, Boolean> thing;
+    private HashMap<Integer, Boolean> keys;
 
     public GameInput() {
-        thing = new HashMap();
-        thing.put(Input.Keys.W, false);
-        thing.put(Input.Keys.A, false);
-        thing.put(Input.Keys.S, false);
-        thing.put(Input.Keys.D, false);
+        keys = new HashMap();
+        keys.put(Input.Keys.W, false);
+        keys.put(Input.Keys.A, false);
+        keys.put(Input.Keys.S, false);
+        keys.put(Input.Keys.D, false);
     }
 
     public boolean wPressed() {
-        return thing.get(Input.Keys.W);
+        return keys.get(Input.Keys.W);
     }
 
     public boolean sPressed() {
-        return thing.get(Input.Keys.S);
+        return keys.get(Input.Keys.S);
     }
 
     public boolean aPressed() {
-        return thing.get(Input.Keys.A);
+        return keys.get(Input.Keys.A);
     }
 
     public boolean dPressed() {
-        return thing.get(Input.Keys.D);
+        return keys.get(Input.Keys.D);
     }
 
     public void reset() {
-        for (Integer key : thing.keySet()) {
-            thing.put(key, false);
+        for (Integer key : keys.keySet()) {
+            keys.put(key, false);
         }
     }
 
     @Override
     public boolean keyDown(int i) {
-        thing.put(i, true);
+        keys.put(i, true);
         return false;
     }
 
