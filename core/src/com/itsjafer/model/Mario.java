@@ -26,7 +26,7 @@ public class Mario {
     // Acceleration (x component, y component)
     private Vector2 acceleration;
 
-    private int stateTime;
+    private float stateTime;
 
     // Some enums to keep track of animation state
 
@@ -164,7 +164,7 @@ public class Mario {
 //        bounds.y = position.y;
     }
 
-    public int getStateTime() {
+    public float getStateTime() {
         return stateTime;
     }
 

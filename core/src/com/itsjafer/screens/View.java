@@ -87,10 +87,10 @@ public class View {
             } else {
                 marioAnimation = AssetManager.marioRunRight;
             }
-
+            System.out.println(mario.getStateTime());
             marioTexture = marioAnimation.getKeyFrame(mario.getStateTime(), true);
         }
-        //batch.draw(marioTexture, mario.getX() / GameLoader.PPU, mario.getY() / GameLoader.PPU, mario.getWidth() / GameLoader.PPU, mario.getHeight() / GameLoader.PPU);
+        batch.draw(marioTexture, mario.getX() / GameLoader.PPU, mario.getY() / GameLoader.PPU, mario.getWidth() / GameLoader.PPU, mario.getHeight() / GameLoader.PPU);
     }
 
     public void resize(int width, int height) {
