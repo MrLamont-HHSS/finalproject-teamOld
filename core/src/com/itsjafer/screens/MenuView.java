@@ -11,14 +11,20 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.itsjafer.game.TiledGame;
 
 /**
- *  NOT DONE. 
- * 
+ * NOT DONE.
+ *
  * @author Jafer
  */
 public class MenuView {
@@ -26,40 +32,48 @@ public class MenuView {
     private TiledGame myGame;
     private Stage stage;
     private Skin skin;
-
+    private Label title;
     private TextButton singlePlayer;
     private TextButton multiPlayer;
     private TextButton options;
-    BitmapFont font = new BitmapFont();
+    private BitmapFont font;
+    private SpriteBatch spriteBatch;
+
     /**
      * Constructor for the splash screen
      *
      * @param g Game which called this splash screen.
      */
     public MenuView(TiledGame g) {
-        myGame = g;
+        spriteBatch = new SpriteBatch();
+        font = new BitmapFont();
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);// Make the stage consume events
 
         createBasicSkin();
+        
         singlePlayer = new TextButton("Single player", skin); // Use the initialized skin
         singlePlayer.setPosition(Gdx.graphics.getWidth() / 2 - Gdx.graphics.getWidth() / 8, Gdx.graphics.getHeight() / 4 + Gdx.graphics.getHeight() / 8);
-        
+
         multiPlayer = new TextButton("Multiplayer", skin); // Use the initialized skin
         multiPlayer.setPosition(Gdx.graphics.getWidth() / 2 - Gdx.graphics.getWidth() / 8, Gdx.graphics.getHeight() / 4);
-        
+
         options = new TextButton("Options", skin); // Use the initialized skin
         options.setPosition(Gdx.graphics.getWidth() / 2 - Gdx.graphics.getWidth() / 8, Gdx.graphics.getHeight() / 4 - Gdx.graphics.getHeight() / 8);
-        
+
         stage.addActor(singlePlayer);
         stage.addActor(multiPlayer);
         stage.addActor(options);
+        
+        singlePlayer.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                //switch to view
+            }
+        });
+
     }
 
-    public void moveDown()
-    {
-        
-    }
     private void createBasicSkin() {
         //Create a font
         BitmapFont font = new BitmapFont();
@@ -80,12 +94,19 @@ public class MenuView {
         textButtonStyle.over = skin.newDrawable("background", Color.LIGHT_GRAY);
         textButtonStyle.font = skin.getFont("default");
         skin.add("default", textButtonStyle);
+        
+        //Create label style
+        Label.LabelStyle labelStyle = new Label.LabelStyle();
+        labelStyle.font = font;
+        labelStyle.fontColor = Color.GRAY;
+        skin.add("default", labelStyle);
 
     }
 
     public void render() {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.input.setInputProcessor(stage);
 
         stage.act();
         stage.draw();
