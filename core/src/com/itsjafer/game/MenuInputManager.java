@@ -5,7 +5,6 @@
  */
 package com.itsjafer.game;
 
-import com.itsjafer.model.GameWorld;
 import com.itsjafer.screens.MenuView;
 
 /**

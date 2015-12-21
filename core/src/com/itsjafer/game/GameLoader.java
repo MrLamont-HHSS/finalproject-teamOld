@@ -12,7 +12,6 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -49,7 +48,7 @@ public class GameLoader {
         levelHeight = mapHeight;
 
     }
-
+    
     public static GameWorld generateWorld() {
         float gravX = Float.parseFloat(map.getProperties().get("GravityX").toString());
         float gravY = Float.parseFloat(map.getProperties().get("GravityY").toString());
@@ -89,16 +88,16 @@ public class GameLoader {
         
         
  /////////////// GROUND/ ///////////
-        bodyDef.type = BodyType.StaticBody;
-        bodyDef.position.set(0, 0);
-        ChainShape groundShape = new ChainShape();
-        groundShape.createChain(new Vector2[] {new Vector2(-500, 0), new Vector2(500, 0)});
+//        bodyDef.type = BodyType.StaticBody;
+//        bodyDef.position.set(0, 0);
+//        ChainShape groundShape = new ChainShape();
+//        groundShape.createChain(new Vector2[] {new Vector2(-500, 0), new Vector2(500, 0)});
+////        
+//        fixtureDef.shape = groundShape;
+//        Body thing = physicsWorld.createBody(bodyDef);
+//        thing.createFixture(fixtureDef);
 //        
-        fixtureDef.shape = groundShape;
-        Body thing = physicsWorld.createBody(bodyDef);
-        thing.createFixture(fixtureDef);
-        
-        groundShape.dispose();
+//        groundShape.dispose();
         
 //        groundShape = new ChainShape();
 //        groundShape.createChain(new Vector2[] {new Vector2(0, 0), new Vector2(0, 100)});
@@ -109,20 +108,30 @@ public class GameLoader {
 //        
         return new Mario(marioBody, width, height);
     }
-
+    
     private static TiledMapTileLayer getCollisionLayer() {
 //        Array<Rectangle> collisionBlocks = new Array();
 
+//        BodyDef bodyDef = new BodyDef();
+//        FixtureDef fixtureDef = new FixtureDef();
+//        
+//        bodyDef.type = BodyType.StaticBody;
+//        
+//        PolygonShape groundShape = new PolygonShape();
+//        groundShape.setAsBox(tileWidth/2, tileHeight/2, new Vector2(tileWidth/2, tileHeight/2), (float)Math.toRadians(0));
+//        fixtureDef.shape = groundShape;
+//        
+//        groundShape.dispose();
+        
         TiledMapTileLayer solidBlocks = (TiledMapTileLayer) map.getLayers().get("Collision");// loop through all of the cells, find a tile and make a rectangle
 //        for (int x = 0; x < levelWidth; x++) {
 //            for (int y = 0; y < levelHeight; y++) {
 //                if (solidBlocks.getCell(x, y) != null) {
-//                    Rectangle r = new Rectangle(x, y, tileWidth, tileHeight);
-//                    collisionBlocks.add(r);
+//                    bodyDef.position.set(x, y);
+//                    physicsWorld.createBody(bodyDef).createFixture(fixtureDef);
 //                }
 //            }
 //        }
-
         return solidBlocks;
     }
 }

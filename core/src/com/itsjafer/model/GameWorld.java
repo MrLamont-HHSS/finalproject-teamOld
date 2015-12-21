@@ -7,7 +7,6 @@ package com.itsjafer.model;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
 import com.badlogic.gdx.physics.box2d.World;
-import javax.swing.text.html.HTML;
 
 /**
  * The actual level
