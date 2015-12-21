@@ -18,7 +18,7 @@ public class MenuInputManager {
     public static void processInput(GameInput inputStream, MenuView mV) {
         //will add more things as we go
         if (inputStream.sPressed()) {
-            mV.moveDown();
+//            mV.moveDown();
         }
     }
 }
