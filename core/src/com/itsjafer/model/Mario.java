@@ -90,11 +90,13 @@ public class Mario {
     public void runRight() {
         state = State.RUNNING;
         isFacingLeft = false;
+        body.applyForceToCenter(1000,0, true);
     }
 
     public void runLeft() {
         state = State.RUNNING;
         isFacingLeft = true;
+        body.applyForceToCenter(-1000,0, true);
     }
 
     public boolean isRunning() {
@@ -109,10 +111,11 @@ public class Mario {
      * Sets the player's state to jumping.
      */
     public void jump() {
-        if (state != State.JUMPING && velocity.y == 0) {
-            velocity.y = 4;
-            state = State.JUMPING;
-        }
+//        if (state != State.JUMPING && velocity.y == 0) {
+//            velocity.y = 4;
+//            state = State.JUMPING;
+//        }
+        body.applyForceToCenter(0, 1000, true);
         state = State.JUMPING;
     }
 
@@ -154,9 +157,9 @@ public class Mario {
      */
     public void update(float delta) {
         // accelerates the player taking into consideration the game time
-        accelerate(delta);
-        // updates the bounds to changed coordinates
-        updateBounds();
+//        accelerate(delta);
+//        // updates the bounds to changed coordinates
+//        updateBounds();
         stateTime += delta;
         // OLD COLLISION CODE -- STAY AS FAR AWAY AS POSSIBLE, in fact I'd recommend investing in extra-terrestrial real estate
 //        velocity.mulAdd(acceleration, delta);
@@ -170,6 +173,7 @@ public class Mario {
 //        position.add(velocity);
 //        bounds.x = position.x;
 //        bounds.y = position.y;
+//        body.setAngularVelocity(5);
     }
 
     public float getStateTime() {

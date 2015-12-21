@@ -19,12 +19,14 @@ public class GameInputManager {
             world.getMario().stand();
         }
         if (inputStream.aPressed()) {
-            world.getMario().setVelocityX(-2);
+//            world.getMario().setVelocityX(-2);
             world.getMario().runLeft();
         } else if (inputStream.dPressed()) {
-            world.getMario().setVelocityX(2);
+//            world.getMario().setVelocityX(2);
             world.getMario().runRight();
-
+        } else if (inputStream.wPressed())
+        {
+            world.getMario().jump();
         }
     }
 }

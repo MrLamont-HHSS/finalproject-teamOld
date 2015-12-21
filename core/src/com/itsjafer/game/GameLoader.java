@@ -12,6 +12,8 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.itsjafer.model.Mario;
@@ -52,8 +54,7 @@ public class GameLoader {
         float gravX = Float.parseFloat(map.getProperties().get("GravityX").toString());
         float gravY = Float.parseFloat(map.getProperties().get("GravityY").toString());
         
-        physicsWorld = new World(new Vector2(gravX, gravY), true);
-        
+        physicsWorld = new World(new Vector2(gravX, gravY).scl(PPU), true);
         return new GameWorld(getMario(), getCollisionLayer(), physicsWorld);
     }
 
@@ -64,23 +65,48 @@ public class GameLoader {
         float x = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("x", Float.class);
         float y = map.getLayers().get("Mario").getObjects().get(0).getProperties().get("y", Float.class) + height;
         
-        //body definition
         BodyDef bodyDef = new BodyDef();
+        FixtureDef fixtureDef = new FixtureDef();
+        
+        //body definition
+        
         bodyDef.type = BodyType.DynamicBody;
         bodyDef.position.set(x, y);
+//        bodyDef.position.set(0, 2);
         //box shape
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(width, height);
+        shape.setAsBox(width/2, height/2, new Vector2(width/2, height/2), (float)Math.toRadians(0));
+//        shape.setAsBox(2, 2, new Vector2(1, 1), (float)Math.toRadians(0));
         // fixture definition
-        FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
-        fixtureDef.friction = 0.75f;
-        fixtureDef.restitution = 0f;
+        fixtureDef.friction = 1;
+//        fixtureDef.restitution = 0.1f;
         
         Body marioBody = physicsWorld.createBody(bodyDef);
+        marioBody.createFixture(fixtureDef);
         
         shape.dispose();
-
+        
+        
+ /////////////// GROUND/ ///////////
+        bodyDef.type = BodyType.StaticBody;
+        bodyDef.position.set(0, 0);
+        ChainShape groundShape = new ChainShape();
+        groundShape.createChain(new Vector2[] {new Vector2(-500, 0), new Vector2(500, 0)});
+//        
+        fixtureDef.shape = groundShape;
+        Body thing = physicsWorld.createBody(bodyDef);
+        thing.createFixture(fixtureDef);
+        
+        groundShape.dispose();
+        
+//        groundShape = new ChainShape();
+//        groundShape.createChain(new Vector2[] {new Vector2(0, 0), new Vector2(0, 100)});
+//        fixtureDef.shape = groundShape;
+//        physicsWorld.createBody(bodyDef).createFixture(fixtureDef);
+//        
+//        groundShape.dispose();
+//        
         return new Mario(marioBody, width, height);
     }
 

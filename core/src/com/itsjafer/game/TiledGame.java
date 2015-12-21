@@ -46,7 +46,7 @@ public class TiledGame extends ApplicationAdapter {
         // Reads input and acts accordingly
         GameInputManager.processInput(gameInput, world);
         // Clear all input (might be removed later)
-        gameInput.reset();
+//        gameInput.reset();
         // Updates all game components
         world.update(Gdx.graphics.getDeltaTime());
         // Draws the game

@@ -49,6 +49,6 @@
   </data>
  </layer>
  <objectgroup name="Mario">
-  <object id="51" name="Mario" gid="1353" x="62.6667" y="226" width="16" height="32"/>
+  <object id="51" name="Mario" gid="1353" x="64.6667" y="260.333" width="16" height="32"/>
  </objectgroup>
 </map>

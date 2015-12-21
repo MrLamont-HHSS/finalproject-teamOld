@@ -54,6 +54,7 @@ public class GameInput implements InputProcessor {
 
     @Override
     public boolean keyUp(int i) {
+        keys.put(i, false);
         return false;
     }
 

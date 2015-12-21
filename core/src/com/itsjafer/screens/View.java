@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.itsjafer.model.Mario;
@@ -27,6 +28,8 @@ public class View {
     private OrthographicCamera camera;
     private Viewport viewport;
     private OrthogonalTiledMapRenderer renderer;
+    
+    Box2DDebugRenderer r=new Box2DDebugRenderer();
 
     public View() {
         batch = new SpriteBatch();
@@ -61,6 +64,8 @@ public class View {
             renderMario(world.getMario());
         }
         batch.end();
+        
+//        r.render(world.getPhysicsWorld(), camera.combined);
 
     }
 
@@ -81,7 +86,6 @@ public class View {
         } else if (mario.isJumping()) {
             marioTexture = AssetManager.marioJump;
         } else if (mario.isRunning()) {
-
             if (mario.isFacingLeft()) {
                 marioAnimation = AssetManager.marioRunLeft;
             } else {
@@ -89,7 +93,7 @@ public class View {
             }
             marioTexture = marioAnimation.getKeyFrame(mario.getStateTime(), true);
         }
-        batch.draw(marioTexture, mario.getX() / GameLoader.PPU, mario.getY() / GameLoader.PPU, mario.getWidth() / GameLoader.PPU, mario.getHeight() / GameLoader.PPU);
+        batch.draw(marioTexture, mario.getX()/GameLoader.PPU, mario.getY()/GameLoader.PPU, mario.getWidth() / GameLoader.PPU, mario.getHeight() / GameLoader.PPU);
     }
 
     public void resize(int width, int height) {
