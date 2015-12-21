@@ -35,7 +35,7 @@ public class GameWorld {
 
         this.physicsWorld = physicsWorld;
         // mario should accelerate according to the global gravity as soon as he spawns
-        mario.setAcceleration(physicsWorld.getGravity());
+//        mario.setAcceleration(physicsWorld.getGravity());
     }
 
     /**

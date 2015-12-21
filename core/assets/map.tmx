@@ -33,22 +33,22 @@
    eJzt0dsJg0AQheGzW1K8NBCb0mrsIFahpSRFKDpCAooBwRXXh/+Dw8A8LMMeCQAAAAAAAEtF7AOwUlmeope7mPsovxPxNZaXwvt4eCmxpJbMkvsTjgvQOqlz23l3b8tHx/v49VD/Scxeevv7wW1nqHF+w+/vAAC40gTmXhiH
   </data>
  </layer>
- <layer name="hitBlocks" width="100" height="20" visible="0">
+ <layer name="hitBlocks" width="100" height="20">
   <data encoding="base64" compression="zlib">
    eJzt1kERADAIwDCQgX+jU7EDjkRBn40AAIA5KrsLAIDNfryEPwEAgDsesEEATw==
   </data>
  </layer>
- <layer name="solidBlocks" width="100" height="20" visible="0">
+ <layer name="solidBlocks" width="100" height="20">
   <data encoding="base64" compression="zlib">
    eJzt1jEKACAMA8D2+f7aqaBjoYPIHYRsmRMBAABvWHk3AEDH+SUqk5sAAMD/NtmjBFE=
   </data>
  </layer>
- <layer name="Collision" width="100" height="20">
+ <layer name="Collision" width="100" height="20" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt1UEKgCAQRuE2c7a8/4laiCRhZDror7wP3AVOvImCHRARLB5ooIcWemihhxZ6aKFHn9Pu44EeWuihhR5a6NGH/4eW1GFGj3wXvHbCe79Gm9kDUWknvfZUvceob+fPPV/Ptc6bZqCHTo98ltVO6X1m3V0zR82cq3rroerZYzf00LJzjwtT4zJL
+   eJztlUEKwCAMBL34tvr/F/VQpFIstRrMKjOQm5CVWTHFEBIjNaABPrTAhxb40AIfWuBjjCPeYwE+tMCHFvjQAh9j8H9okT14+Ci7YNUJ637NxtMHXNQ6adVTdR+z3s6fPV/nevPmDPjQ8VFmWW1q9/Ha3ZKjJeeqvPlQ5eljN/Chxc4+Tt67T8U=
   </data>
  </layer>
  <objectgroup name="Mario">
-  <object id="51" name="Mario" gid="1353" x="64.6667" y="260.333" width="16" height="32"/>
+  <object id="51" name="Mario" gid="1353" x="66.6667" y="162.333" width="16" height="32"/>
  </objectgroup>
 </map>

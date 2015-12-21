@@ -35,9 +35,15 @@ public class GameInput implements InputProcessor {
     public boolean aPressed() {
         return keys.get(Input.Keys.A);
     }
+    public boolean aReleased() {
+        return !keys.get(Input.Keys.A);
+    }
 
     public boolean dPressed() {
         return keys.get(Input.Keys.D);
+    }
+    public boolean dReleased() {
+        return !keys.get(Input.Keys.D);
     }
 
     public void reset() {

@@ -13,6 +13,7 @@ import com.itsjafer.screens.View;
  */
 public class TiledGame extends ApplicationAdapter {
 
+    float prevY;
     // The visual components of IN GAME
     private View gameView;
     // The actual game world
@@ -35,7 +36,6 @@ public class TiledGame extends ApplicationAdapter {
         // sets up the game input
         gameInput = new GameInput();
         Gdx.input.setInputProcessor(gameInput);
-
     }
 
     /**
@@ -49,6 +49,8 @@ public class TiledGame extends ApplicationAdapter {
 //        gameInput.reset();
         // Updates all game components
         world.update(Gdx.graphics.getDeltaTime());
+//        System.out.println(world.getMario().getY()-prevY);
+//        prevY = world.getMario().getY();
         // Draws the game
         gameView.render(world);
     }

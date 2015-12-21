@@ -15,18 +15,24 @@ public class GameInputManager {
     public static void processInput(GameInput inputStream, GameWorld world) {
         if (inputStream.wPressed()) {
             world.getMario().jump();
-        } else if (inputStream.sPressed()) {
+        } if (inputStream.sPressed()) {
             world.getMario().stand();
         }
         if (inputStream.aPressed()) {
 //            world.getMario().setVelocityX(-2);
             world.getMario().runLeft();
-        } else if (inputStream.dPressed()) {
+        } if (inputStream.dPressed()) {
 //            world.getMario().setVelocityX(2);
             world.getMario().runRight();
-        } else if (inputStream.wPressed())
+        } if (inputStream.wPressed())
         {
             world.getMario().jump();
+        } if (inputStream.aReleased())
+        {
+            world.getMario().stand();
+        } if (inputStream.dReleased())
+        {
+            world.getMario().stand();
         }
     }
 }

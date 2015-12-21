@@ -8,6 +8,8 @@ package com.itsjafer.model;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The player
@@ -88,15 +90,17 @@ public class Mario {
     }
 
     public void runRight() {
-        state = State.RUNNING;
+        changeState(State.RUNNING);
         isFacingLeft = false;
-        body.applyForceToCenter(1000,0, true);
+//        body.applyForceToCenter(10,0, true);
+        body.setLinearVelocity(3, body.getLinearVelocity().y);
     }
 
     public void runLeft() {
-        state = State.RUNNING;
+        changeState(State.RUNNING);
         isFacingLeft = true;
-        body.applyForceToCenter(-1000,0, true);
+//        body.applyForceToCenter(-10,0, true);
+        body.setLinearVelocity(-3, body.getLinearVelocity().y);
     }
 
     public boolean isRunning() {
@@ -105,6 +109,19 @@ public class Mario {
 
     public boolean isFacingLeft() {
         return isFacingLeft;
+    }
+    /**
+     * Changes Mario's current state
+     * @param newState the new state
+     */
+    private void changeState(State newState)
+    {
+        if (state != newState)
+        {
+            state = newState;
+            // reset the state timer only if this is a new state
+            stateTime = 0;
+        }
     }
 
     /**
@@ -115,7 +132,7 @@ public class Mario {
 //            velocity.y = 4;
 //            state = State.JUMPING;
 //        }
-        body.applyForceToCenter(0, 1000, true);
+        body.applyForceToCenter(0, 10, true);
         state = State.JUMPING;
     }
 
@@ -123,9 +140,9 @@ public class Mario {
      * Sets the player's state to STANDING.
      */
     public void stand() {
-        state = State.STANDING;
+        changeState(State.STANDING);
     }
-
+    
     /**
      * Accelerates the player.
      *

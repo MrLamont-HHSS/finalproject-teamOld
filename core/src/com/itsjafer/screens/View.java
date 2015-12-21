@@ -71,10 +71,10 @@ public class View {
 
     private void centerCameraOnPlayer(Mario mario) {
         // move the camera to the correct position
-        camera.position.x = Math.max(camera.viewportWidth / 2, mario.getX() / GameLoader.PPU);
+        camera.position.x = Math.max(camera.viewportWidth / 2, mario.getX());
         camera.position.x = Math.min(camera.position.x, GameLoader.levelWidth - camera.viewportWidth / 2);
 
-        camera.position.y = Math.max(camera.viewportHeight / 2, mario.getY() / GameLoader.PPU);
+        camera.position.y = Math.max(camera.viewportHeight / 2, mario.getY());
         camera.position.y = Math.min(camera.position.y, GameLoader.levelHeight - camera.viewportHeight / 2);
     }
 
@@ -93,7 +93,7 @@ public class View {
             }
             marioTexture = marioAnimation.getKeyFrame(mario.getStateTime(), true);
         }
-        batch.draw(marioTexture, mario.getX()/GameLoader.PPU, mario.getY()/GameLoader.PPU, mario.getWidth() / GameLoader.PPU, mario.getHeight() / GameLoader.PPU);
+        batch.draw(marioTexture, mario.getX(), mario.getY(), mario.getWidth(), mario.getHeight());
     }
 
     public void resize(int width, int height) {
