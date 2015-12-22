@@ -6,7 +6,8 @@ package com.itsjafer.model;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.math.Vector2;
+import com.itsjafer.game.GameLoader;
 
 /**
  * The actual level
@@ -19,21 +20,19 @@ public class GameWorld {
     // The blocks with which Mario can collide
     private TiledMapTileLayer collisionBlocks;
     // The global gravity "constant" (it can change)
+    private Vector2 gravity;
 
-    // The physics environment of the game
-    World physicsWorld;
     /**
      * Creates the World object
      *
      * @param mario the player.
      * @param collisionBlocks the tile layer with which the player can collide.
-     * @param physicsWorld the physics environment for the world.
      */
-    public GameWorld(Mario mario, TiledMapTileLayer collisionBlocks, World physicsWorld) {
+    public GameWorld(Mario mario, TiledMapTileLayer collisionBlocks, Vector2 gravity) {
         this.mario = mario;
         this.collisionBlocks = collisionBlocks;
 
-        this.physicsWorld = physicsWorld;
+        this.gravity = gravity;
         // mario should accelerate according to the global gravity as soon as he spawns
 //        mario.setAcceleration(physicsWorld.getGravity());
     }
@@ -44,23 +43,19 @@ public class GameWorld {
      * @param delta the time factor by which the game runs.
      */
     public void update(float delta) {
-        mario.update(delta);
-        physicsWorld.step(delta, 8, 3);
         // starting collision
-//        System.out.println(collisionBlocks.getCell((int)mario.getX()/GameLoader.PPU, (int)mario.getY()/GameLoader.PPU));
+        mario.setAcceleration(gravity);
+        mario.update(delta);
+    }
+    
+    private void collideMarioWithSolidBlocks()
+    {
+        int marioTileX = (int)(mario.getX()/GameLoader.PPU);
+        int marioTileY = (int)(mario.getY()/GameLoader.PPU);
     }
 
     public Mario getMario() {
         return mario;
     }
 
-    public TiledMapTileLayer getCollisionBlocks() {
-        return collisionBlocks;
-    }
-
-    public World getPhysicsWorld()
-    {
-        return physicsWorld;
-    }
-    
 }

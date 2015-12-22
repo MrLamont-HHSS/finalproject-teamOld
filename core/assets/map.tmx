@@ -45,29 +45,10 @@
  </layer>
  <layer name="Collision" width="100" height="20" visible="0">
   <data encoding="base64" compression="zlib">
-   eJztlUEKwCAMBL34tvr/F/VQpFIstRrMKjOQm5CVWTHFEBIjNaABPrTAhxb40AIfWuBjjCPeYwE+tMCHFvjQAh9j8H9okT14+Ci7YNUJ637NxtMHXNQ6adVTdR+z3s6fPV/nevPmDPjQ8VFmWW1q9/Ha3ZKjJeeqvPlQ5eljN/Chxc4+Tt67T8U=
+   eJzt1UEKwCAMRFE3PVvvf6MupFSK0lTETPQ/yE4wMgOmBAAAAGg4j2cAALDi/9By5+CRR9mFUZ2I3i/PPJDVOjm6p6pmve/PPV/neveNkOVueZS7RJvae7zutuxh2TOqVh6q3nmshjy0rJzHBfwSKUU=
   </data>
  </layer>
  <objectgroup name="Mario">
   <object id="51" name="Mario" gid="1353" x="80" y="240" width="16" height="32"/>
- </objectgroup>
- <objectgroup name="testCollisionLayer">
-  <object id="57" x="160" y="192" width="80" height="16"/>
-  <object id="62" x="0" y="256" width="736" height="64"/>
-  <object id="64" x="496" y="192" width="48" height="16"/>
-  <object id="65" x="624" y="224" width="32" height="32"/>
-  <object id="66" x="1040" y="224" width="32" height="32"/>
-  <object id="67" x="800" y="256" width="640" height="64"/>
-  <object id="68" x="1264" y="160" width="48" height="48"/>
-  <object id="69" x="1264" y="96" width="48" height="16"/>
-  <object id="70" x="1216" y="208" width="48" height="48"/>
-  <object id="71" x="1312" y="208" width="48" height="48"/>
-  <object id="73" x="1472" y="256" width="128" height="64"/>
-  <object id="74" x="1568" y="224" width="32" height="32"/>
-  <object id="102" x="32" y="48" width="16" height="224"/>
-  <object id="103" x="240" y="16"/>
-  <object id="104" x="368" y="32"/>
-  <object id="105" x="272" y="96"/>
-  <object id="106" x="304" y="112"/>
  </objectgroup>
 </map>

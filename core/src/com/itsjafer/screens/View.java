@@ -68,13 +68,18 @@ public class View {
 //        r.render(world.getPhysicsWorld(), camera.combined);
 
     }
+    
+    private float convertToTiles(float num)
+    {
+        return num/GameLoader.PPU;
+    }
 
     private void centerCameraOnPlayer(Mario mario) {
         // move the camera to the correct position
-        camera.position.x = Math.max(camera.viewportWidth / 2, mario.getX());
+        camera.position.x = Math.max(camera.viewportWidth / 2, convertToTiles(mario.getX()));
         camera.position.x = Math.min(camera.position.x, GameLoader.levelWidth - camera.viewportWidth / 2);
 
-        camera.position.y = Math.max(camera.viewportHeight / 2, mario.getY());
+        camera.position.y = Math.max(camera.viewportHeight / 2, convertToTiles(mario.getY()));
         camera.position.y = Math.min(camera.position.y, GameLoader.levelHeight - camera.viewportHeight / 2);
     }
 
@@ -93,7 +98,7 @@ public class View {
             }
             marioTexture = marioAnimation.getKeyFrame(mario.getStateTime(), true);
         }
-        batch.draw(marioTexture, mario.getX(), mario.getY(), mario.getWidth(), mario.getHeight());
+        batch.draw(marioTexture, convertToTiles(mario.getX()), convertToTiles(mario.getY()), convertToTiles(mario.getWidth()), convertToTiles(mario.getHeight()));
     }
 
     public void resize(int width, int height) {

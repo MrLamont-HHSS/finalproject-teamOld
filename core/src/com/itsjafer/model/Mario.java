@@ -8,8 +8,6 @@ package com.itsjafer.model;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * The player
@@ -29,179 +27,38 @@ public class Mario {
     // Acceleration (x component, y component)
     private Vector2 acceleration;
 
-    private Body body;
-    
-    private float stateTime;
-    
     // Some enums to keep track of animation state
-
     public static enum State {
 
         STANDING, JUMPING, RUNNING
     }
-
-    boolean isFacingLeft;
-
     // current state
     private State state;
+    // The current state timer (keep strack how long mario has been in the current state)
+    private float stateTime;
+    
+    boolean isFacingLeft;
 
     /// OLD STUFF
 //    private final float MAX_Y_VEL= 0.7f;
 //    private final float MAX_X_VEL= 1f;
-    public Mario(Body body, float width, float height) {
-        // set up the hitbox
-//        bounds = new Rectangle(x, y, width, height);
-//        this.width = width;
-//        this.height = height;
+    public Mario(float x, float y, float width, float height) {
+        this.width = width;
+        this.height = height;
 //        // start standing
         state = State.STANDING;
 //        // the position vector
-//        position = new Vector2(x, y);
+        position = new Vector2(x, y);
         // start moving 0
         velocity = new Vector2(0, 0);
         // start accelerating 0
         acceleration = new Vector2(0, 0);
         
-        this.body = body;
-        
-        this.width = width;
-        this.height = height;
+        // set up the hitbox
+        bounds = new Rectangle(x, y, width, height);
 
-    }
-
-    public void setAcceleration(Vector2 acceleration) {
-        this.acceleration = acceleration;
-    }
-
-    public float getX() {
-        return body.getPosition().x;
-    }
-
-    public float getY() {
-        return body.getPosition().y;
-    }
-
-    public void setVelocityX(float x) {
-        velocity.x = x;
-    }
-
-    public void setVelocityY(float y) {
-        velocity.y = y;
-    }
-
-    public void runRight() {
-        changeState(State.RUNNING);
-        isFacingLeft = false;
-//        body.applyForceToCenter(10,0, true);
-//        body.setLinearVelocity(3, body.getLinearVelocity().y);
-//        if (body.getLinearVelocity().x <= 4)
-//            body.applyLinearImpulse(new Vector2(2f, 0), body.getWorldCenter(), true);
-        
-//        Vector2 vel = body.getLinearVelocity();
-//        float desiredVel = 5;
-//        float velChange = desiredVel - vel.x;
-//        float impulse = body.getMass() * velChange; //disregard time factor
-//        body.applyLinearImpulse( new Vector2(impulse,0), body.getWorldCenter(), true);
-        if (body.getLinearVelocity().x < 5)
-        {
-            body.setLinearVelocity(5, body.getLinearVelocity().y);
-        }
-        body.setLinearDamping(0);
-//For a gradual acceleration, just adjust the desired change in velocity as appropriate:
-//1
-//2
-//3
-//      case MS_LEFT:  desiredVel = b2Max( vel.x - 0.1f, -5.0f ); break;
-//      case MS_STOP:  desiredVel = vel.x * 0.98f; break;
-//      case MS_RIGHT: desiredVel = b2Min( vel.x + 0.1f,  5.0f ); break;
-    }
-
-    public void runLeft() {
-        changeState(State.RUNNING);
-        isFacingLeft = true;
-//        if (body.getLinearVelocity().x >= -4)
-//            body.applyLinearImpulse(new Vector2(-2f, 0), body.getWorldCenter(), true);
-        if (body.getLinearVelocity().x > -4)
-        {
-            body.setLinearVelocity(-4, body.getLinearVelocity().y);
-        }
-//        body.applyForceToCenter(-10,0, true);
-//        body.setLinearVelocity(-3, body.getLinearVelocity().y);
-    }
-
-    public boolean isRunning() {
-        return state == State.RUNNING;
-    }
-
-    public boolean isFacingLeft() {
-        return isFacingLeft;
-    }
-    /**
-     * Changes Mario's current state
-     * @param newState the new state
-     */
-    private void changeState(State newState)
-    {
-        if (state != newState)
-        {
-            state = newState;
-            // reset the state timer only if this is a new state
-            stateTime = 0;
-        }
-    }
-
-    /**
-     * Sets the player's state to jumping.
-     */
-    public void jump() {
-//        if (state != State.JUMPING && velocity.y == 0) {
-//            velocity.y = 4;
-//            state = State.JUMPING;
-//        }
-//        body.applyForceToCenter(0, 10, true);
-//        body.applyLinearImpulse(new Vector2(0, 0.8f), body.getWorldCenter(), true);
-        if (state != State.JUMPING)
-        {
-            body.setLinearVelocity(body.getLinearVelocity().x, 10);
-            state = State.JUMPING;
-        }
-    }
-
-    /**
-     * Sets the player's state to STANDING.
-     */
-    public void stand() {
-        if (body.getLinearVelocity().y == 0)
-        {
-            changeState(State.STANDING);
-            body.setLinearDamping(2);
-        }
     }
     
-    /**
-     * Accelerates the player.
-     *
-     * @param delta the time factor by which the game runs.
-     */
-    public void accelerate(float delta) {
-//        // Applies the acceleration vector to the velocity vector
-//        velocity.mulAdd(acceleration, delta);
-//        // Applies the velocity vector to the player's position vector
-//        position.add(velocity);
-//        // Update hitbox coordinates
-//        updateBounds();
-    }
-
-    /**
-     * Updates the hitbox position and dimensions.
-     */
-    private void updateBounds() {
-//        bounds.x = position.x;
-//        bounds.y = position.y;
-//        bounds.width = width;
-//        bounds.height = height;
-    }
-
     /**
      * Updates Mario.
      *
@@ -209,9 +66,9 @@ public class Mario {
      */
     public void update(float delta) {
         // accelerates the player taking into consideration the game time
-//        accelerate(delta);
+        move(delta);
 //        // updates the bounds to changed coordinates
-//        updateBounds();
+        updateBounds();
         stateTime += delta;
         // OLD COLLISION CODE -- STAY AS FAR AWAY AS POSSIBLE, in fact I'd recommend investing in extra-terrestrial real estate
 //        velocity.mulAdd(acceleration, delta);
@@ -228,16 +85,111 @@ public class Mario {
 //        body.setAngularVelocity(5);
     }
 
-    public float getStateTime() {
-        return stateTime;
+    public void runRight() {
+        changeState(State.RUNNING);
+        isFacingLeft = false;
     }
 
+    public void runLeft() {
+        changeState(State.RUNNING);
+        isFacingLeft = true;
+    }
+    
+    /**
+     * Sets the player's state to jumping.
+     */
+    public void jump() {
+        state = State.JUMPING;
+    }
+
+    /**
+     * Sets the player's state to STANDING.
+     */
+    public void stand() {
+        state = State.STANDING;
+    }
+    
+    /**
+     * Accelerates the player.
+     *
+     * @param delta the time factor by which the game runs.
+     */
+    public void move(float delta) {
+//        // Applies the acceleration vector to the velocity vector
+        velocity.mulAdd(acceleration, delta);
+//        // Applies the velocity vector to the player's position vector
+        position.add(velocity);
+//        // Update hitbox coordinates
+    }
+    
+    public boolean isRunning() {
+        return state == State.RUNNING;
+    }
+
+    public boolean isFacingLeft() {
+        return isFacingLeft;
+    }
     public boolean isStanding() {
         return state == State.STANDING;
     }
 
     public boolean isJumping() {
         return state == State.JUMPING;
+    }
+    /**
+     * Changes Mario's current state
+     * @param newState the new state
+     */
+    private void changeState(State newState)
+    {
+        if (state != newState)
+        {
+            state = newState;
+            // reset the state timer only if this is a new state
+            stateTime = 0;
+        }
+    }
+    
+    public float getStateTime() {
+        return stateTime;
+    }
+
+    public float getX() {
+        return position.x;
+    }
+
+    public float getY() {
+        return position.y;
+    }
+    
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setAcceleration(Vector2 acceleration) {
+        this.acceleration = acceleration;
+    }
+    
+    public void setVelocityX(float x) {
+        velocity.x = x;
+    }
+
+    public void setVelocityY(float y) {
+        velocity.y = y;
+    }
+
+    /**
+     * Updates the hitbox position and dimensions.
+     */
+    private void updateBounds() {
+        bounds.x = position.x;
+        bounds.y = position.y;
+        bounds.width = width;
+        bounds.height = height;
     }
 
     /////// OLD CODE ------------- VENTURE IN AT YOUR OWN RISK ///////////////////////////
@@ -256,12 +208,5 @@ public class Mario {
 //        return this.bounds;
 //    }
 //    
-    public float getWidth() {
-        return width;
-    }
-
-    public float getHeight() {
-        return height;
-    }
 
 }
