@@ -4,20 +4,22 @@
  */
 package com.itsjafer.game;
 
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.utils.Array;
-import com.itsjafer.model.Mario;
 import com.itsjafer.model.GameWorld;
+import com.itsjafer.model.Mario;
 
 /**
  *
@@ -87,26 +89,6 @@ public class GameLoader {
         
         shape.dispose();
         
-        
- /////////////// GROUND/ ///////////
-//        bodyDef.type = BodyType.StaticBody;
-//        bodyDef.position.set(0, 0);
-//        ChainShape groundShape = new ChainShape();
-//        groundShape.createChain(new Vector2[] {new Vector2(-500, 0), new Vector2(500, 0)});
-////        
-//        fixtureDef.shape = groundShape;
-//        Body thing = physicsWorld.createBody(bodyDef);
-//        thing.createFixture(fixtureDef);
-//        
-//        groundShape.dispose();
-        
-//        groundShape = new ChainShape();
-//        groundShape.createChain(new Vector2[] {new Vector2(0, 0), new Vector2(0, 100)});
-//        fixtureDef.shape = groundShape;
-//        physicsWorld.createBody(bodyDef).createFixture(fixtureDef);
-//        
-//        groundShape.dispose();
-//        
         return new Mario(marioBody, width, height);
     }
     
@@ -119,20 +101,32 @@ public class GameLoader {
         bodyDef.type = BodyType.StaticBody;
         
         PolygonShape groundShape = new PolygonShape();
-        groundShape.setAsBox(tileWidth/2f, tileHeight/2f, new Vector2(tileWidth/2f, tileHeight/2f), (float)Math.toRadians(0));
-        fixtureDef.shape = groundShape;
         
-        
-        
-        for (int x = 0; x < levelWidth; x++) {
-            for (int y = 0; y < levelHeight; y++) {
-                if (solidBlocks.getCell(x, y) != null) {
-                    bodyDef.position.set(x, y);
-                    physicsWorld.createBody(bodyDef).createFixture(fixtureDef);
-                }
+        for (MapObject object: map.getLayers().get("testCollisionLayer").getObjects().getByType(PolygonMapObject.class))
+        {
+//            Rectangle rect = ((RectangleMapObject)object).getRectangle();
+//            bodyDef.position.set(rect.getX()/PPU, rect.getY()/PPU);
+//            groundShape.setAsBox(rect.getWidth()/2/PPU, rect.getHeight()/2/PPU, new Vector2(rect.getWidth()/2/PPU, rect.getHeight()/2/PPU), 0);
+            float[] vertices = ((PolygonMapObject)object).getPolygon().getVertices();
+            for (int i = 0; i < vertices.length; i ++)
+            {
+                vertices[i] /= PPU;
+                System.out.println(vertices[i]);
             }
+            bodyDef.position.set(((PolygonMapObject)object).getPolygon().getX()/PPU, ((PolygonMapObject)object).getPolygon().getY()/PPU);
+            
+            groundShape.set(vertices);
+            fixtureDef.shape = groundShape;
+            physicsWorld.createBody(bodyDef).createFixture(fixtureDef);
         }
-        groundShape.dispose();
+        for (MapObject object: map.getLayers().get("testCollisionLayer").getObjects().getByType(RectangleMapObject.class))
+        {
+            Rectangle rect = ((RectangleMapObject)object).getRectangle();
+            bodyDef.position.set(rect.getX()/PPU, rect.getY()/PPU);
+            groundShape.setAsBox(rect.getWidth()/2/PPU, rect.getHeight()/2/PPU, new Vector2(rect.getWidth()/2/PPU, rect.getHeight()/2/PPU), 0);
+            fixtureDef.shape = groundShape;
+            physicsWorld.createBody(bodyDef).createFixture(fixtureDef);
+        }
         return solidBlocks;
     }
 }

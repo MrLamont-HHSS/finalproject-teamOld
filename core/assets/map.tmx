@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="100" height="20" tilewidth="16" tileheight="16" nextobjectid="56">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="100" height="20" tilewidth="16" tileheight="16" nextobjectid="102">
  <properties>
   <property name="GravityX" value="0"/>
   <property name="GravityY" value="-9.8"/>
@@ -49,6 +49,20 @@
   </data>
  </layer>
  <objectgroup name="Mario">
-  <object id="51" name="Mario" gid="1353" x="66.6667" y="162.333" width="16" height="32"/>
+  <object id="51" name="Mario" gid="1353" x="80" y="240" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup name="testCollisionLayer">
+  <object id="57" x="160" y="192" width="80" height="16"/>
+  <object id="62" x="0" y="256" width="736" height="64"/>
+  <object id="64" x="496" y="192" width="48" height="16"/>
+  <object id="65" x="624" y="224" width="32" height="32"/>
+  <object id="66" x="1040" y="224" width="32" height="32"/>
+  <object id="67" x="800" y="256" width="640" height="64"/>
+  <object id="68" x="1264" y="160" width="48" height="48"/>
+  <object id="69" x="1264" y="96" width="48" height="16"/>
+  <object id="70" x="1216" y="208" width="48" height="48"/>
+  <object id="71" x="1312" y="208" width="48" height="48"/>
+  <object id="73" x="1472" y="256" width="128" height="64"/>
+  <object id="74" x="1568" y="224" width="32" height="32"/>
  </objectgroup>
 </map>

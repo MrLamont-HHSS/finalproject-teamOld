@@ -93,14 +93,18 @@ public class Mario {
         changeState(State.RUNNING);
         isFacingLeft = false;
 //        body.applyForceToCenter(10,0, true);
-        body.setLinearVelocity(3, body.getLinearVelocity().y);
+//        body.setLinearVelocity(3, body.getLinearVelocity().y);
+        if (body.getLinearVelocity().x <= 4)
+            body.applyLinearImpulse(new Vector2(2f, 0), body.getWorldCenter(), true);
     }
 
     public void runLeft() {
         changeState(State.RUNNING);
         isFacingLeft = true;
+        if (body.getLinearVelocity().x >= -4)
+            body.applyLinearImpulse(new Vector2(-2f, 0), body.getWorldCenter(), true);
 //        body.applyForceToCenter(-10,0, true);
-        body.setLinearVelocity(-3, body.getLinearVelocity().y);
+//        body.setLinearVelocity(-3, body.getLinearVelocity().y);
     }
 
     public boolean isRunning() {
@@ -132,7 +136,9 @@ public class Mario {
 //            velocity.y = 4;
 //            state = State.JUMPING;
 //        }
-        body.applyForceToCenter(0, 10, true);
+//        body.applyForceToCenter(0, 10, true);
+//        body.applyLinearImpulse(new Vector2(0, 0.8f), body.getWorldCenter(), true);
+        body.setLinearVelocity(body.getLinearVelocity().x, 10);
         state = State.JUMPING;
     }
 
