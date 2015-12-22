@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.itsjafer.game;
 
 import com.badlogic.gdx.Input;
@@ -10,46 +12,26 @@ import java.util.HashMap;
 
 /**
  *
- * @author kobed6328
+ * @author Dmitry
  */
-public class GameInput implements InputProcessor {
-
+public class InputStream implements InputProcessor{
+    
     private HashMap<Integer, Boolean> keys;
-
-    public GameInput() {
+    
+    public InputStream()
+    {
         keys = new HashMap();
-        keys.put(Input.Keys.W, false);
-        keys.put(Input.Keys.A, false);
-        keys.put(Input.Keys.S, false);
+        
         keys.put(Input.Keys.D, false);
     }
-
-    public boolean wPressed() {
-        return keys.get(Input.Keys.W);
-    }
-
-    public boolean sPressed() {
-        return keys.get(Input.Keys.S);
-    }
-
-    public boolean aPressed() {
-        return keys.get(Input.Keys.A);
-    }
-    public boolean aReleased() {
-        return !keys.get(Input.Keys.A);
-    }
-
-    public boolean dPressed() {
-        return keys.get(Input.Keys.D);
-    }
-    public boolean dReleased() {
-        return !keys.get(Input.Keys.D);
-    }
-
-    public void reset() {
-        for (Integer key : keys.keySet()) {
-            keys.put(key, false);
+    
+    public boolean isKeyPressed(Integer keyCode)
+    {
+        if (keys.containsKey(keyCode))
+        {
+            return keys.get(keyCode);
         }
+        return false;
     }
 
     @Override
@@ -93,5 +75,7 @@ public class GameInput implements InputProcessor {
     public boolean scrolled(int i) {
         return false;
     }
-
+    
+    
+    
 }

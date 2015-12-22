@@ -94,15 +94,37 @@ public class Mario {
         isFacingLeft = false;
 //        body.applyForceToCenter(10,0, true);
 //        body.setLinearVelocity(3, body.getLinearVelocity().y);
-        if (body.getLinearVelocity().x <= 4)
-            body.applyLinearImpulse(new Vector2(2f, 0), body.getWorldCenter(), true);
+//        if (body.getLinearVelocity().x <= 4)
+//            body.applyLinearImpulse(new Vector2(2f, 0), body.getWorldCenter(), true);
+        
+//        Vector2 vel = body.getLinearVelocity();
+//        float desiredVel = 5;
+//        float velChange = desiredVel - vel.x;
+//        float impulse = body.getMass() * velChange; //disregard time factor
+//        body.applyLinearImpulse( new Vector2(impulse,0), body.getWorldCenter(), true);
+        if (body.getLinearVelocity().x < 5)
+        {
+            body.setLinearVelocity(5, body.getLinearVelocity().y);
+        }
+        body.setLinearDamping(0);
+//For a gradual acceleration, just adjust the desired change in velocity as appropriate:
+//1
+//2
+//3
+//      case MS_LEFT:  desiredVel = b2Max( vel.x - 0.1f, -5.0f ); break;
+//      case MS_STOP:  desiredVel = vel.x * 0.98f; break;
+//      case MS_RIGHT: desiredVel = b2Min( vel.x + 0.1f,  5.0f ); break;
     }
 
     public void runLeft() {
         changeState(State.RUNNING);
         isFacingLeft = true;
-        if (body.getLinearVelocity().x >= -4)
-            body.applyLinearImpulse(new Vector2(-2f, 0), body.getWorldCenter(), true);
+//        if (body.getLinearVelocity().x >= -4)
+//            body.applyLinearImpulse(new Vector2(-2f, 0), body.getWorldCenter(), true);
+        if (body.getLinearVelocity().x > -4)
+        {
+            body.setLinearVelocity(-4, body.getLinearVelocity().y);
+        }
 //        body.applyForceToCenter(-10,0, true);
 //        body.setLinearVelocity(-3, body.getLinearVelocity().y);
     }
@@ -138,15 +160,22 @@ public class Mario {
 //        }
 //        body.applyForceToCenter(0, 10, true);
 //        body.applyLinearImpulse(new Vector2(0, 0.8f), body.getWorldCenter(), true);
-        body.setLinearVelocity(body.getLinearVelocity().x, 10);
-        state = State.JUMPING;
+        if (state != State.JUMPING)
+        {
+            body.setLinearVelocity(body.getLinearVelocity().x, 10);
+            state = State.JUMPING;
+        }
     }
 
     /**
      * Sets the player's state to STANDING.
      */
     public void stand() {
-        changeState(State.STANDING);
+        if (body.getLinearVelocity().y == 0)
+        {
+            changeState(State.STANDING);
+            body.setLinearDamping(2);
+        }
     }
     
     /**

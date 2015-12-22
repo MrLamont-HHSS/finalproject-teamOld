@@ -14,10 +14,7 @@ import com.itsjafer.screens.MenuView;
  */
 public class MenuInputManager {
 
-    public static void processInput(GameInput inputStream, MenuView mV) {
+    public static void processInput(MenuView mV) {
         //will add more things as we go
-        if (inputStream.sPressed()) {
-//            mV.moveDown();
-        }
     }
 }

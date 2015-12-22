@@ -19,8 +19,7 @@ public class TiledGame extends ApplicationAdapter {
     // The actual game world
     private GameWorld world;
     // The input getter for IN GAME
-    private GameInput gameInput;
-    
+    private InputStream inputStream;
     /**
      * Creates the TiledGame class.
      */
@@ -33,9 +32,9 @@ public class TiledGame extends ApplicationAdapter {
 
         gameView = new View();
 
+        inputStream = new InputStream();
+        Gdx.input.setInputProcessor(inputStream);
         // sets up the game input
-        gameInput = new GameInput();
-        Gdx.input.setInputProcessor(gameInput);
     }
 
     /**
@@ -44,15 +43,12 @@ public class TiledGame extends ApplicationAdapter {
     @Override
     public void render() {
         // Reads input and acts accordingly
-        GameInputManager.processInput(gameInput, world);
-        // Clear all input (might be removed later)
-//        gameInput.reset();
+        GameInputManager.processInput(inputStream, world);
         // Updates all game components
         world.update(Gdx.graphics.getDeltaTime());
-//        System.out.println(world.getMario().getY()-prevY);
-//        prevY = world.getMario().getY();
         // Draws the game
         gameView.render(world);
+        
     }
 
     /**

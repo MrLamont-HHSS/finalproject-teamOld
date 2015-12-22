@@ -20,6 +20,8 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.itsjafer.model.GameWorld;
 import com.itsjafer.model.Mario;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -104,9 +106,6 @@ public class GameLoader {
         
         for (MapObject object: map.getLayers().get("testCollisionLayer").getObjects().getByType(PolygonMapObject.class))
         {
-//            Rectangle rect = ((RectangleMapObject)object).getRectangle();
-//            bodyDef.position.set(rect.getX()/PPU, rect.getY()/PPU);
-//            groundShape.setAsBox(rect.getWidth()/2/PPU, rect.getHeight()/2/PPU, new Vector2(rect.getWidth()/2/PPU, rect.getHeight()/2/PPU), 0);
             float[] vertices = ((PolygonMapObject)object).getPolygon().getVertices();
             for (int i = 0; i < vertices.length; i ++)
             {

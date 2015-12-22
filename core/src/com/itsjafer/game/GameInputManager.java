@@ -4,6 +4,8 @@
  */
 package com.itsjafer.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.itsjafer.model.GameWorld;
 
 /**
@@ -12,27 +14,26 @@ import com.itsjafer.model.GameWorld;
  */
 public class GameInputManager {
 
-    public static void processInput(GameInput inputStream, GameWorld world) {
-        if (inputStream.wPressed()) {
+    public static void processInput(InputStream inputStream, GameWorld world) {
+        if (inputStream.isKeyPressed(Input.Keys.W))
+        {
             world.getMario().jump();
-        } if (inputStream.sPressed()) {
-            world.getMario().stand();
         }
-        if (inputStream.aPressed()) {
-//            world.getMario().setVelocityX(-2);
-            world.getMario().runLeft();
-        } if (inputStream.dPressed()) {
-//            world.getMario().setVelocityX(2);
-            world.getMario().runRight();
-        } if (inputStream.wPressed())
+        if (inputStream.isKeyPressed(Input.Keys.D) || inputStream.isKeyPressed(Input.Keys.A))
         {
-            world.getMario().jump();
-        } if (inputStream.aReleased())
-        {
-            world.getMario().stand();
-        } if (inputStream.dReleased())
+            if (inputStream.isKeyPressed(Input.Keys.D))
+            {
+                world.getMario().runRight();
+            }
+            if (inputStream.isKeyPressed(Input.Keys.A))
+            {
+                world.getMario().runLeft();
+            }
+        }
+        else
         {
             world.getMario().stand();
         }
+        
     }
 }
