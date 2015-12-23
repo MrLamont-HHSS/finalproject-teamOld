@@ -7,7 +7,6 @@ package com.itsjafer.model;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 
 /**
  * The player
@@ -88,11 +87,17 @@ public class Mario {
     public void runRight() {
         changeState(State.RUNNING);
         isFacingLeft = false;
+        
+        position.x ++;
+        updateBounds();
     }
 
     public void runLeft() {
         changeState(State.RUNNING);
         isFacingLeft = true;
+        
+        position.x --;
+        updateBounds();
     }
     
     /**
@@ -114,7 +119,7 @@ public class Mario {
      *
      * @param delta the time factor by which the game runs.
      */
-    public void move(float delta) {
+    private void move(float delta) {
 //        // Applies the acceleration vector to the velocity vector
         velocity.mulAdd(acceleration, delta);
 //        // Applies the velocity vector to the player's position vector
@@ -208,5 +213,16 @@ public class Mario {
 //        return this.bounds;
 //    }
 //    
+    public void setX(float newX)
+    {
+        position.x = newX;
+        updateBounds();
+    }
+    public void setY(float newY)
+    {
+        position.y = newY;
+        updateBounds();
+    }
+    
 
 }

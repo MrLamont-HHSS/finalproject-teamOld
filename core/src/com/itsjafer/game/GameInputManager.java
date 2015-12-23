@@ -15,25 +15,32 @@ import com.itsjafer.model.GameWorld;
 public class GameInputManager {
 
     public static void processInput(InputStream inputStream, GameWorld world) {
-        if (inputStream.isKeyPressed(Input.Keys.W))
+//        if (inputStream.isKeyPressed(Input.Keys.W))
+//        {
+//            world.getMario().jump();
+//        }
+//        if (inputStream.isKeyPressed(Input.Keys.D) || inputStream.isKeyPressed(Input.Keys.A))
+//        {
+//            if (inputStream.isKeyPressed(Input.Keys.D))
+//            {
+//                world.getMario().runRight();
+//            }
+//            if (inputStream.isKeyPressed(Input.Keys.A))
+//            {
+//                world.getMario().runLeft();
+//            }
+//        }
+//        else
+//        {
+//            world.getMario().stand();
+//        }
+        if (inputStream.isKeyPressed(Input.Keys.D))
         {
-            world.getMario().jump();
+            world.getMario().runRight();
         }
-        if (inputStream.isKeyPressed(Input.Keys.D) || inputStream.isKeyPressed(Input.Keys.A))
+        if (inputStream.isKeyPressed(Input.Keys.A))
         {
-            if (inputStream.isKeyPressed(Input.Keys.D))
-            {
-                world.getMario().runRight();
-            }
-            if (inputStream.isKeyPressed(Input.Keys.A))
-            {
-                world.getMario().runLeft();
-            }
+            world.getMario().runLeft();
         }
-        else
-        {
-            world.getMario().stand();
-        }
-        
     }
 }

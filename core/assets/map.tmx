@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="100" height="20" tilewidth="16" tileheight="16" nextobjectid="107">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="100" height="20" tilewidth="16" tileheight="16" nextobjectid="109">
  <properties>
   <property name="GravityX" value="0"/>
   <property name="GravityY" value="-9.8"/>
@@ -43,12 +43,12 @@
    eJzt1jEKACAMA8D2+f7aqaBjoYPIHYRsmRMBAABvWHk3AEDH+SUqk5sAAMD/NtmjBFE=
   </data>
  </layer>
- <layer name="Collision" width="100" height="20" visible="0">
+ <layer name="Collision" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1UEKwCAMRFE3PVvvf6MupFSK0lTETPQ/yE4wMgOmBAAAAGg4j2cAALDi/9By5+CRR9mFUZ2I3i/PPJDVOjm6p6pmve/PPV/neveNkOVueZS7RJvae7zutuxh2TOqVh6q3nmshjy0rJzHBfwSKUU=
+   eJzt1UEOgCAMRFE2nM3738iVkZgSiiJMyX8JKzCtTokpAQAAABqOfC8AALz4f2i5cliRRzkLo2Yi+nz9nUfU7zKTNZOj57SspWTW3emp0zr3tl+rB/Lwnf2y33qudv+sPaVlvc+q2p4+PH1GVctD1TOP3ZCHlp3zOAGhCCmR
   </data>
  </layer>
  <objectgroup name="Mario">
-  <object id="51" name="Mario" gid="1353" x="80" y="240" width="16" height="32"/>
+  <object id="51" name="Mario" gid="1353" x="116" y="232" width="16" height="32"/>
  </objectgroup>
 </map>
